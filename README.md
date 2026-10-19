@@ -1,6 +1,10 @@
 # Kasparro factual-claim assessment
 
-Python agent, exact-span evaluator, FastAPI service and PostgreSQL persistence for the issued speaker dataset. **Implementation and controlled tests are complete; the required live experiment and submission are unfinished.** The user has not supplied credentials for an allowed provider. No live OpenAI request was made, and no quality gain is claimed. Grok is outside the assessment's listed providers (OpenAI, Anthropic or Gemini).
+Python agent, exact-span evaluator, FastAPI service and PostgreSQL persistence for the issued speaker dataset.
+
+**Provider disclosure:** I used Groq because I did not have credits for OpenAI, Anthropic, or Gemini. The configured model is `openai/gpt-oss-120b`, hosted through Groq. This is a deviation from the assessment's listed providers and is disclosed for the reviewer to assess; it is not an OpenAI API run. Codex assistance and actual checks are documented in `ANALYSIS.md`.
+
+Repository: [harshith-murali/kasparro-ai](https://github.com/harshith-murali/kasparro-ai). Live evidence status is recorded in `reports/live-status.json` and `SUBMISSION.md`.
 
 ## Install
 
@@ -13,7 +17,7 @@ python -m pip install -r requirements.lock
 cp .env.example .env
 ```
 
-Set your own `OPENAI_API_KEY` in `.env` and set `DATABASE_URL`. Keep `.env` private. The CLI loads `.env` with override enabled, so a key explicitly configured there takes precedence over inherited environment variables. The adapter targets the official OpenAI API. Default model: `gpt-4.1-mini-2025-04-14`; default request timeout: **60 seconds**; retries: **0**; temperature: **0**; output limit: **6,000 tokens**; maximum: **3 model turns per answer**. All four runs must use identical settings.
+Set `MODEL_PROVIDER=groq`, your own `GROQ_API_KEY`, and `DATABASE_URL` in `.env`. To use the original OpenAI adapter instead, set `MODEL_PROVIDER=openai` and `OPENAI_API_KEY`. Keep `.env` private. The CLI loads `.env` with override enabled, so a key explicitly configured there takes precedence over inherited environment variables. The Groq adapter targets `https://api.groq.com/openai/v1` with model `openai/gpt-oss-120b` and low reasoning effort. The OpenAI adapter retains `gpt-4.1-mini-2025-04-14`. default request timeout: **60 seconds**; retries: **0**; temperature: **0**; output limit: **6,000 tokens**; maximum: **3 model turns per answer**. All four runs must use identical settings.
 
 ```sh
 docker compose up -d --wait
@@ -66,9 +70,11 @@ Actual captured results are in `reports/tests.txt`. Tests use a fake model provi
    python -m kasparro run --version v2 --split check
    ```
 
-   Freezing requires completed live development reports for both current prompts. Live check runs reject a missing or changed freeze fingerprint. Do not edit agent code, prompts, dependencies or settings after freezing. Check reports contain predictions, errors, timings and counts; all gold-dependent fields stay null. No final-check quality score is computed.
+   Groq requests are paced using remaining-token headers and a conservative estimate of the next request, with no automatic retries. Provider errors remain answer errors. Request pacing may add time outside the 60-second provider-request timeout. Groq rejects JSON mode combined with tools, so its responses are prompted as JSON and validated locally. The OpenAI adapter uses JSON mode.
 
-Each run writes `reports/<run_id>/report.json`, raw `predictions.json`, and one sanitized `Axx.trace.json` per scheduled answer. The trace contains actual model messages and executed fact-tool results when run live. It excludes credentials, provider headers and raw provider exceptions. The provider is recorded as `openai` or `fake`, so controlled traces cannot be confused with live evidence. Outcomes are saved to disk before labels are loaded, then persisted to PostgreSQL. Interrupted or infrastructure-failed runs retain partial files and are marked failed where the database is reachable.
+Freezing requires completed live development reports for both current prompts. Live check runs reject a missing or changed freeze fingerprint. Do not edit agent code, prompts, dependencies or settings after freezing. Check reports contain predictions, errors, timings and counts; all gold-dependent fields stay null. No final-check quality score is computed.
+
+Each run writes `reports/<run_id>/report.json`, raw `predictions.json`, and one sanitized `Axx.trace.json` per scheduled answer. The trace contains actual model messages and executed fact-tool results when run live. It excludes credentials, provider headers and raw provider exceptions. The provider is recorded as `groq`, `openai` or `fake`, so controlled traces cannot be confused with live evidence. Outcomes are saved to disk before labels are loaded, then persisted to PostgreSQL. Interrupted or infrastructure-failed runs retain partial files and are marked failed where the database is reachable.
 
 ## API
 
@@ -87,7 +93,7 @@ Ensure the shell environment uses your intended credentials; uvicorn's env-file 
 ## Implementation
 
 - `kasparro/data.py`: proper UTF-8 CSV parsing with `newline=''`; immutable source wording, typed booleans/numbers, brand-scoped facts.
-- `kasparro/agent.py`: direct OpenAI function-calling loop, read-only allowlisted tool, strict argument validation, bounded calls, sanitized answer-level errors. Multiple brands may be requested in one turn. Final output requires a primary-brand lookup; citations must come from retrieved brands.
+- `kasparro/agent.py`: OpenAI-compatible function-calling loop (Groq or OpenAI), read-only allowlisted tool, strict argument validation, bounded calls, sanitized answer-level errors. Multiple brands may be requested in one turn. Final output requires a primary-brand lookup; citations must come from retrieved brands.
 - `kasparro/models.py`: strict schemas; Python resolves exact quote occurrences; checks Unicode spans, quote equality, IDs, order, overlaps, labels and fact IDs. Repeated quotes use an explicit model-selected occurrence. Reasons have a conservative two-sentence punctuation check.
 - `kasparro/evaluation.py`: no fuzzy or LLM matching. G is all scheduled gold claims, P is all accepted predictions, M is exact matches, C is exact matches with correct labels. Extraction F1 is `2M/(P+G)`; main score joint F1 is `2C/(P+G)`. Errors contribute zero P while retaining their gold in G. Missing/duplicate answer outcomes are rejected.
 - `kasparro/runner.py`, `store.py`, `schema.sql`: atomic local evidence files and per-answer database transactions; parameterized SQL, foreign keys, unique answer/span constraints, JSONB metadata and optional development matches.
@@ -95,4 +101,4 @@ Ensure the shell environment uses your intended credentials; uvicorn's env-file 
 
 Development labels are opened only by the evaluator, after raw predictions are saved. Agent inputs contain the four required fields; tools expose catalogue rows only. Dataset and prompt SHA-256 hashes, versions, settings, timestamps and available Git revision are recorded. Original supplied CSVs and assessment document remain in place.
 
-The tool API follows the [official OpenAI function-calling documentation](https://developers.openai.com/api/docs/guides/function-calling).
+The adapters follow [Groq OpenAI compatibility](https://console.groq.com/docs/openai), [Groq local tool calling](https://console.groq.com/docs/tool-use/local-tool-calling), and [OpenAI function calling](https://developers.openai.com/api/docs/guides/function-calling).

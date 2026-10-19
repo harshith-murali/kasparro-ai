@@ -1,6 +1,6 @@
 from uuid import UUID
 from fastapi import FastAPI, HTTPException
-from .agent import Agent, AgentError, OpenAIProvider, Settings
+from .agent import Agent, AgentError, create_provider, Settings
 from .models import ClassifyInput, RunInput
 from .runner import run_evaluation
 from .store import Store
@@ -13,7 +13,7 @@ def create_app(agent=None, store=None):
         nonlocal agent, store
         if agent is None:
             settings = Settings.from_env()
-            agent = Agent(OpenAIProvider(settings), settings=settings)
+            agent = Agent(create_provider(settings), settings=settings)
         return agent, store
 
     @app.post("/classify")

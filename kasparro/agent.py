@@ -2,7 +2,7 @@ import json
 import os
 import time
 from dataclasses import dataclass
-from openai import OpenAI, APITimeoutError
+from openai import OpenAI, APITimeoutError, APIStatusError
 from .data import ROOT, Catalogue
 from .models import AnswerInput, locate_quotes
 
@@ -16,22 +16,31 @@ class AgentError(Exception):
 @dataclass(frozen=True)
 class Settings:
     model: str = "gpt-4.1-mini-2025-04-14"
+    provider: str = "openai"
     timeout_seconds: float = 60.0
     temperature: float = 0.0
     max_tokens: int = 6000
     max_turns: int = 3
+    request_interval_seconds: float = 0.0
 
     def __post_init__(self):
+        if self.provider not in ("openai", "groq"):
+            raise ValueError("Unknown model provider")
         if not 1 <= self.max_turns <= 3 or self.timeout_seconds <= 0:
             raise ValueError("Use one to three turns and a positive provider timeout")
 
     @classmethod
     def from_env(cls):
-        return cls(model=os.getenv("OPENAI_MODEL", cls.model),
-                   timeout_seconds=float(os.getenv("PROVIDER_TIMEOUT_SECONDS", "60")))
+        provider = os.getenv("MODEL_PROVIDER", "openai")
+        model = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b") if provider == "groq" else os.getenv("OPENAI_MODEL", cls.model)
+        return cls(provider=provider, model=model,
+                   timeout_seconds=float(os.getenv("PROVIDER_TIMEOUT_SECONDS", "60")),
+                   request_interval_seconds=float(os.getenv("PROVIDER_REQUEST_INTERVAL_SECONDS", "0")))
 
 
 class OpenAIProvider:
+    provider_name = "openai"
+
     def __init__(self, settings):
         self.settings = settings
         # Never log credentials, headers, raw exceptions, or environment values.
@@ -39,19 +48,74 @@ class OpenAIProvider:
 
     def complete(self, messages, tools):
         try:
-            response = self.client.chat.completions.create(
+            options = {"response_format": {"type": "json_object"}} if self.provider_name == "openai" else {"reasoning_effort": "low"}
+            response = self.request(
                 model=self.settings.model, messages=messages, tools=tools,
                 temperature=self.settings.temperature, max_tokens=self.settings.max_tokens,
-                response_format={"type": "json_object"})
+                **options)
             if response.choices[0].finish_reason not in ("stop", "tool_calls"):
                 raise AgentError("invalid_output", "Incomplete model response")
-            return response.choices[0].message.model_dump(exclude_none=True)
+            raw = response.choices[0].message.model_dump(exclude_none=True)
+            # Return only chat message fields accepted on the next tool-loop turn.
+            return {k: raw[k] for k in ("role", "content", "tool_calls") if k in raw}
+        except APIStatusError as exc:
+            kind = "rate_limit" if exc.status_code == 429 else "provider_error"
+            message = "Provider rate limit exceeded" if exc.status_code == 429 else "Provider request failed"
+            raise AgentError(kind, message) from None
         except APITimeoutError:
             raise AgentError("timeout", "Provider request timed out") from None
         except AgentError:
             raise
         except Exception:
             raise AgentError("provider_error", "Provider request failed") from None
+
+
+    def request(self, **kwargs):
+        return self.client.chat.completions.create(**kwargs)
+
+
+class GroqProvider(OpenAIProvider):
+    provider_name = "groq"
+
+    def __init__(self, settings):
+        self.settings = settings
+        self.client = OpenAI(api_key=os.environ["GROQ_API_KEY"],
+                             base_url="https://api.groq.com/openai/v1",
+                             timeout=settings.timeout_seconds, max_retries=0)
+        self.last_request_at = 0.0
+        self.rate_remaining = None
+        self.rate_limit = 8000.0
+        self.rate_updated_at = time.monotonic()
+        self.last_telemetry = None
+
+    def request(self, **kwargs):
+        # Pace requests before sending; failed requests are never retried or relabelled.
+        now = time.monotonic()
+        wait = max(0.0, self.settings.request_interval_seconds - (now-self.last_request_at))
+        if self.rate_remaining is not None:
+            available = min(self.rate_limit, self.rate_remaining + (now-self.rate_updated_at)*self.rate_limit/60)
+            source_chars = len(json.dumps(kwargs["messages"])) + len(json.dumps(kwargs["tools"]))
+            # Conservative estimate; token counts and response headers are saved as telemetry.
+            expected_output = 2200 if any(m["role"] == "tool" for m in kwargs["messages"]) else 300
+            required = min(self.rate_limit, source_chars/3 + expected_output)
+            wait = max(wait, (required-available)*60/self.rate_limit)
+        while wait > 0:
+            pause = min(wait, 30.0)
+            time.sleep(pause)
+            wait -= pause
+        self.last_request_at = time.monotonic()
+        raw = self.client.chat.completions.with_raw_response.create(**kwargs)
+        response = raw.parse()
+        self.rate_limit = float(raw.headers.get("x-ratelimit-limit-tokens", self.rate_limit))
+        self.rate_remaining = float(raw.headers.get("x-ratelimit-remaining-tokens", self.rate_limit))
+        self.rate_updated_at = time.monotonic()
+        self.last_telemetry = {"usage": response.usage.model_dump() if response.usage else None,
+            "rate_limits": {k:v for k,v in raw.headers.items() if k.startswith("x-ratelimit-")}}
+        return response
+
+
+def create_provider(settings):
+    return GroqProvider(settings) if settings.provider == "groq" else OpenAIProvider(settings)
 
 
 class Agent:
@@ -84,6 +148,8 @@ class Agent:
             for _ in range(self.settings.max_turns):
                 reply = self.provider.complete(messages, tools)
                 trace.append({"model": reply})
+                if getattr(self.provider, "last_telemetry", None):
+                    trace.append({"provider_telemetry": self.provider.last_telemetry})
                 calls = reply.get("tool_calls", [])
                 messages.append(reply)
                 if calls:

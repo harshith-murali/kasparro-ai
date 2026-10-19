@@ -10,7 +10,7 @@ def compare(left, right):
     for key in ['dataset_version','fact_version','evaluator_version','provider','model','settings','file_hashes','scheduled_answers']:
         if left['metadata'][key] != right['metadata'][key]:
             raise ValueError(f'Unfair comparison: {key} differs')
-    if left['metadata']['provider'] != 'openai':
+    if left['metadata']['provider'] not in ('openai', 'groq'):
         raise ValueError('Fake-provider runs are controlled tests, not live evaluation evidence')
     for report in [left,right]:
         if report['status'] != 'completed': raise ValueError('Run is incomplete')

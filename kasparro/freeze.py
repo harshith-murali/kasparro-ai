@@ -26,7 +26,7 @@ def require_development_reports(settings):
         version = meta.get('agent_version')
         if version not in ('v1','v2'):
             continue
-        if (report.get('status') == 'completed' and meta.get('provider') == 'openai'
+        if (report.get('status') == 'completed' and meta.get('provider') == settings.provider
             and meta.get('split') == 'development' and meta.get('settings') == current['settings']
             and meta.get('file_hashes') == current['datasets']
             and meta.get('prompt_sha256') == current['files'][f'prompts/{version}.txt']

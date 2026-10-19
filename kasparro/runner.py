@@ -29,7 +29,7 @@ def revision():
 def run_evaluation(agent, store, version, split, output_dir=None):
     if version not in ("v1", "v2") or split not in ("development", "check"):
         raise ValueError("Invalid run configuration")
-    if split == "check" and agent.provider.__class__.__name__ == "OpenAIProvider":
+    if split == "check" and getattr(agent.provider, "provider_name", "fake") in ("openai", "groq"):
         from .freeze import require_frozen
         require_frozen(agent.settings)
     answers = load_answers(split)
@@ -39,7 +39,7 @@ def run_evaluation(agent, store, version, split, output_dir=None):
     metadata = {"agent_version": version, "prompt_version": version,
         "prompt_sha256": hashlib.sha256((ROOT / "prompts" / f"{version}.txt").read_bytes()).hexdigest(),
         "dataset_version": DATASET_VERSION, "fact_version": FACT_VERSION, "evaluator_version": EVALUATOR_VERSION,
-        "split": split, "provider": "openai" if agent.provider.__class__.__name__ == "OpenAIProvider" else "fake",
+        "split": split, "provider": getattr(agent.provider, "provider_name", "fake"),
         "model": agent.settings.model, "settings": asdict(agent.settings),
         "timestamp": datetime.now(timezone.utc).isoformat(), "source_revision": revision(), "file_hashes": file_hashes(),
         "scheduled_answers": [a["answer_id"] for a in answers]}

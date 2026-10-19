@@ -1,7 +1,7 @@
 import argparse
 import json
 from dotenv import load_dotenv
-from .agent import Agent, OpenAIProvider, Settings
+from .agent import Agent, create_provider, Settings
 from .store import Store
 from .runner import run_evaluation
 
@@ -21,7 +21,7 @@ def main():
         print("Database schema initialized")
     else:
         settings = Settings.from_env()
-        result = run_evaluation(Agent(OpenAIProvider(settings), settings=settings), store, args.version, args.split)
+        result = run_evaluation(Agent(create_provider(settings), settings=settings), store, args.version, args.split)
         print(json.dumps({"run_id": result["run_id"], "status": result["status"], "scores": result["scores"]}, indent=2))
 
 
