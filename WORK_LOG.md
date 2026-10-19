@@ -36,3 +36,13 @@ Packaging timestamp: 2026-10-19T13:35:11.309318+05:30
 - Published the implementation and requested Groq disclosure to the supplied GitHub repository. Final update contains all attempts, controlled replay, actual test output and explicit limitations.
 
 Final evidence packaging timestamp: 2026-10-19T14:23:24.508686+05:30
+
+## Replacement-key retry
+
+- User supplied a replacement Groq credential; updated only the ignored, permission-restricted `.env`. A minimal inference check succeeded.
+- Automatic approval review initially blocked the run because its own usage limit was reached. The user requested a retry; it executed successfully.
+- Verified unchanged freeze and database access, then reran frozen v1 check: a6df95a1-f62f-40ad-b7cb-b85c4f44d7c8. A41 produced nine validated claims; A42–A50 have daily-quota errors. Check quality fields remain null.
+- The replacement key did not provide enough daily quota to resume the full evaluation. No further quota-exhausted model calls were scheduled. Original attempts remain retained.
+- No source changes or new test execution were needed; the latest controlled test result remains 81 passed.
+
+Retry evidence timestamp: 2026-10-19T18:30:22.013762+05:30

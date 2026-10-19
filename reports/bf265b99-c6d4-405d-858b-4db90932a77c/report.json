@@ -1,0 +1,179 @@
+{
+  "run_id": "bf265b99-c6d4-405d-858b-4db90932a77c",
+  "status": "completed",
+  "metadata": {
+    "agent_version": "v2",
+    "prompt_version": "v2",
+    "prompt_sha256": "2ddcd6ea9ab85adfd27bb1712639e60f634f3da9dc61405c5d7fb542beff7cbb",
+    "dataset_version": "long-brand-answers-50-v4",
+    "fact_version": "speaker-catalogue-v4",
+    "evaluator_version": "sentence-spans-and-labels-v4",
+    "split": "check",
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "settings": {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "timeout_seconds": 60.0,
+      "temperature": 0.0,
+      "max_tokens": 6000,
+      "max_turns": 3,
+      "request_interval_seconds": 0.0
+    },
+    "timestamp": "2026-10-19T11:26:34.387579+00:00",
+    "source_revision": {
+      "commit": "fa191e4cf85c36d41a9d72e45b3f6f6af565a0aa",
+      "dirty": true
+    },
+    "file_hashes": {
+      "answers.csv": "fa28e813ea54b4e5ea985585f22f084d826241e1182accbc27ace17066125724",
+      "brand_facts.csv": "2190d40fad2dd167ef2437956c43d595aaf2554ea673a4789b9343cb7e2936f2",
+      "development_gold.csv": "afe84cc78f304afb6a4aaa505dd7504af80fcbf8bc507806aa5ff0aab6bf4850"
+    },
+    "scheduled_answers": [
+      "A41",
+      "A42",
+      "A43",
+      "A44",
+      "A45",
+      "A46",
+      "A47",
+      "A48",
+      "A49",
+      "A50"
+    ]
+  },
+  "answers": [
+    {
+      "answer_id": "A41",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "quota_exhausted",
+        "message": "Provider daily token quota exhausted"
+      },
+      "latency_seconds": 0.3971191250020638,
+      "trace_reference": "reports/bf265b99-c6d4-405d-858b-4db90932a77c/A41.trace.json"
+    },
+    {
+      "answer_id": "A42",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "quota_exhausted",
+        "message": "Provider daily token quota exhausted"
+      },
+      "latency_seconds": 0.00034520898771006614,
+      "trace_reference": "reports/bf265b99-c6d4-405d-858b-4db90932a77c/A42.trace.json"
+    },
+    {
+      "answer_id": "A43",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "quota_exhausted",
+        "message": "Provider daily token quota exhausted"
+      },
+      "latency_seconds": 0.00015591600094921887,
+      "trace_reference": "reports/bf265b99-c6d4-405d-858b-4db90932a77c/A43.trace.json"
+    },
+    {
+      "answer_id": "A44",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "quota_exhausted",
+        "message": "Provider daily token quota exhausted"
+      },
+      "latency_seconds": 0.00013304200547281653,
+      "trace_reference": "reports/bf265b99-c6d4-405d-858b-4db90932a77c/A44.trace.json"
+    },
+    {
+      "answer_id": "A45",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "quota_exhausted",
+        "message": "Provider daily token quota exhausted"
+      },
+      "latency_seconds": 0.0001329160004388541,
+      "trace_reference": "reports/bf265b99-c6d4-405d-858b-4db90932a77c/A45.trace.json"
+    },
+    {
+      "answer_id": "A46",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "quota_exhausted",
+        "message": "Provider daily token quota exhausted"
+      },
+      "latency_seconds": 0.00017462500545661896,
+      "trace_reference": "reports/bf265b99-c6d4-405d-858b-4db90932a77c/A46.trace.json"
+    },
+    {
+      "answer_id": "A47",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "quota_exhausted",
+        "message": "Provider daily token quota exhausted"
+      },
+      "latency_seconds": 0.00013145800039637834,
+      "trace_reference": "reports/bf265b99-c6d4-405d-858b-4db90932a77c/A47.trace.json"
+    },
+    {
+      "answer_id": "A48",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "quota_exhausted",
+        "message": "Provider daily token quota exhausted"
+      },
+      "latency_seconds": 0.0001355419954052195,
+      "trace_reference": "reports/bf265b99-c6d4-405d-858b-4db90932a77c/A48.trace.json"
+    },
+    {
+      "answer_id": "A49",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "quota_exhausted",
+        "message": "Provider daily token quota exhausted"
+      },
+      "latency_seconds": 0.00011083399294875562,
+      "trace_reference": "reports/bf265b99-c6d4-405d-858b-4db90932a77c/A49.trace.json"
+    },
+    {
+      "answer_id": "A50",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "quota_exhausted",
+        "message": "Provider daily token quota exhausted"
+      },
+      "latency_seconds": 0.00012341700494289398,
+      "trace_reference": "reports/bf265b99-c6d4-405d-858b-4db90932a77c/A50.trace.json"
+    }
+  ],
+  "scores": {
+    "scheduled_answers": 10,
+    "answer_errors": 10,
+    "P": 0,
+    "G": null,
+    "M": null,
+    "C": null,
+    "extraction_precision": null,
+    "extraction_recall": null,
+    "extraction_f1": null,
+    "joint_precision": null,
+    "joint_recall": null,
+    "joint_f1": null,
+    "gold_claim_coverage": null,
+    "missed_gold_ids": null,
+    "unmatched_prediction_ids": null,
+    "matched_wrong_label_ids": null,
+    "matches": null
+  },
+  "error": null,
+  "finished_at": "2026-10-19T11:26:34.872250+00:00"
+}

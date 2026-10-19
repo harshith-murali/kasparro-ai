@@ -25,16 +25,6 @@
       "joint_f1": 0.0
     },
     {
-      "agent_version": "v1",
-      "split": "check",
-      "run_id": "f9c567ec-5dc9-489c-ae52-2966c05fc05a",
-      "report": "reports/f9c567ec-5dc9-489c-ae52-2966c05fc05a/report.json",
-      "processing_status": "completed",
-      "answer_errors": 10,
-      "accepted_predictions": 0,
-      "joint_f1": null
-    },
-    {
       "agent_version": "v2",
       "split": "check",
       "run_id": "049197e2-386d-4a74-b9e7-578698130862",
@@ -42,6 +32,16 @@
       "processing_status": "completed",
       "answer_errors": 10,
       "accepted_predictions": 0,
+      "joint_f1": null
+    },
+    {
+      "agent_version": "v1",
+      "split": "check",
+      "run_id": "a6df95a1-f62f-40ad-b7cb-b85c4f44d7c8",
+      "report": "reports/a6df95a1-f62f-40ad-b7cb-b85c4f44d7c8/report.json",
+      "processing_status": "completed",
+      "answer_errors": 9,
+      "accepted_predictions": 9,
       "joint_f1": null
     }
   ],
@@ -55,5 +55,18 @@
     "9733ded9-c4a7-41bb-9954-1320273704eb"
   ],
   "required_next_step": "Obtain sufficient quota and rerun all four frozen evaluations.",
-  "daily_quota_behavior": "After an explicit daily quota failure, remaining answers preserve errors without repeating exhausted requests."
+  "daily_quota_behavior": "After an explicit daily quota failure, remaining answers preserve errors without repeating exhausted requests.",
+  "previous_run_attempts": [
+    {
+      "agent_version": "v1",
+      "split": "check",
+      "run_id": "f9c567ec-5dc9-489c-ae52-2966c05fc05a",
+      "report": "reports/f9c567ec-5dc9-489c-ae52-2966c05fc05a/report.json",
+      "processing_status": "completed",
+      "answer_errors": 10,
+      "accepted_predictions": 0,
+      "joint_f1": null
+    }
+  ],
+  "replacement_credential_retry": "Minimal inference succeeded, but daily quota was exhausted again after one valid check answer. Frozen versions/settings unchanged."
 }

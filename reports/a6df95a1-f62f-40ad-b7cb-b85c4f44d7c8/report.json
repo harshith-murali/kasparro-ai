@@ -1,0 +1,270 @@
+{
+  "run_id": "a6df95a1-f62f-40ad-b7cb-b85c4f44d7c8",
+  "status": "completed",
+  "metadata": {
+    "agent_version": "v1",
+    "prompt_version": "v1",
+    "prompt_sha256": "2ddcd6ea9ab85adfd27bb1712639e60f634f3da9dc61405c5d7fb542beff7cbb",
+    "dataset_version": "long-brand-answers-50-v4",
+    "fact_version": "speaker-catalogue-v4",
+    "evaluator_version": "sentence-spans-and-labels-v4",
+    "split": "check",
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "settings": {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "timeout_seconds": 60.0,
+      "temperature": 0.0,
+      "max_tokens": 6000,
+      "max_turns": 3,
+      "request_interval_seconds": 0.0
+    },
+    "timestamp": "2026-10-19T12:57:15.878479+00:00",
+    "source_revision": {
+      "commit": "fa191e4cf85c36d41a9d72e45b3f6f6af565a0aa",
+      "dirty": true
+    },
+    "file_hashes": {
+      "answers.csv": "fa28e813ea54b4e5ea985585f22f084d826241e1182accbc27ace17066125724",
+      "brand_facts.csv": "2190d40fad2dd167ef2437956c43d595aaf2554ea673a4789b9343cb7e2936f2",
+      "development_gold.csv": "afe84cc78f304afb6a4aaa505dd7504af80fcbf8bc507806aa5ff0aab6bf4850"
+    },
+    "scheduled_answers": [
+      "A41",
+      "A42",
+      "A43",
+      "A44",
+      "A45",
+      "A46",
+      "A47",
+      "A48",
+      "A49",
+      "A50"
+    ]
+  },
+  "answers": [
+    {
+      "answer_id": "A41",
+      "status": "success",
+      "claims": [
+        {
+          "claim_id": "A41:371:551",
+          "start_char": 371,
+          "end_char": 551,
+          "quote": "An opened StoneWave Go can be returned to any authorized India seller within thirty days for a full refund, even when the speaker has no manufacturing defect or functional problem.",
+          "label": "unknown",
+          "fact_ids": [],
+          "reason": "No catalogue fact about return policy."
+        },
+        {
+          "claim_id": "A41:552:732",
+          "start_char": 552,
+          "end_char": 732,
+          "quote": "The official India catalogue price of StoneWave Go will drop by INR 300 during January 2027, with that future reduction applying before shipping to purchases from the brand itself.",
+          "label": "unknown",
+          "fact_ids": [],
+          "reason": "Future price change not covered by facts."
+        },
+        {
+          "claim_id": "A41:734:910",
+          "start_char": 734,
+          "end_char": 910,
+          "quote": "Using a twenty-watt wall adapter, a fully discharged StoneWave Go reaches a complete charge in ninety minutes, so a short charging stop is enough to restore the entire battery.",
+          "label": "unknown",
+          "fact_ids": [],
+          "reason": "No fact on charging time."
+        },
+        {
+          "claim_id": "A41:911:1071",
+          "start_char": 911,
+          "end_char": 1071,
+          "quote": "At fifty percent volume with EQ off and a new battery in the laboratory, StoneWave Go is rated for 1020 minutes of playback before recharging becomes necessary.",
+          "label": "contradicted",
+          "fact_ids": [
+            "stonewave.go.battery_50_percent"
+          ],
+          "reason": "Fact states 16 hours (960 min) at 50 % volume, not 1020 min."
+        },
+        {
+          "claim_id": "A41:1268:1418",
+          "start_char": 1268,
+          "end_char": 1418,
+          "quote": "For an India purchase at the official catalogue list price on 1 October 2026, StoneWave Go still costs INR 1,799 including tax but excluding shipping.",
+          "label": "supported",
+          "fact_ids": [
+            "stonewave.go.price_2026"
+          ],
+          "reason": "Matches price fact for 2026 India catalogue."
+        },
+        {
+          "claim_id": "A41:1419:1599",
+          "start_char": 1419,
+          "end_char": 1599,
+          "quote": "Considering the speaker alone and leaving retail packaging and accessories out of the measurement, StoneWave Go has a stated mass of 0.44 kilograms for carrying-weight comparisons.",
+          "label": "supported",
+          "fact_ids": [
+            "stonewave.go.weight"
+          ],
+          "reason": "Weight fact is 440 g = 0.44 kg."
+        },
+        {
+          "claim_id": "A41:1600:1776",
+          "start_char": 1600,
+          "end_char": 1776,
+          "quote": "The stated laboratory playback time for StoneWave Go, using a new battery with EQ off at one hundred percent volume, remains 16 hours without any reduction for louder playback.",
+          "label": "contradicted",
+          "fact_ids": [
+            "stonewave.go.battery_100_percent"
+          ],
+          "reason": "Fact gives 8 hours at 100 % volume, not 16 hours."
+        },
+        {
+          "claim_id": "A41:1778:1940",
+          "start_char": 1778,
+          "end_char": 1940,
+          "quote": "Looking back specifically at the 2025 India catalogue rather than the current offer, the listed tax-inclusive price of StoneWave Go was INR 1,799 before shipping.",
+          "label": "supported",
+          "fact_ids": [
+            "stonewave.go.price_2025"
+          ],
+          "reason": "Matches 2025 price fact."
+        },
+        {
+          "claim_id": "A41:1941:2116",
+          "start_char": 1941,
+          "end_char": 2116,
+          "quote": "For wired digital audio specifically, the USB-C connector on StoneWave Go does not provide an audio-input path, regardless of the fact that the connector also serves charging.",
+          "label": "supported",
+          "fact_ids": [
+            "stonewave.go.usb_audio"
+          ],
+          "reason": "USB audio fact is false, meaning no audio input path."
+        }
+      ],
+      "error": null,
+      "latency_seconds": 15.41068879199156,
+      "trace_reference": "reports/a6df95a1-f62f-40ad-b7cb-b85c4f44d7c8/A41.trace.json"
+    },
+    {
+      "answer_id": "A42",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "quota_exhausted",
+        "message": "Provider daily token quota exhausted"
+      },
+      "latency_seconds": 56.67197158400086,
+      "trace_reference": "reports/a6df95a1-f62f-40ad-b7cb-b85c4f44d7c8/A42.trace.json"
+    },
+    {
+      "answer_id": "A43",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "quota_exhausted",
+        "message": "Provider daily token quota exhausted"
+      },
+      "latency_seconds": 0.00269799999659881,
+      "trace_reference": "reports/a6df95a1-f62f-40ad-b7cb-b85c4f44d7c8/A43.trace.json"
+    },
+    {
+      "answer_id": "A44",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "quota_exhausted",
+        "message": "Provider daily token quota exhausted"
+      },
+      "latency_seconds": 0.00012279200018383563,
+      "trace_reference": "reports/a6df95a1-f62f-40ad-b7cb-b85c4f44d7c8/A44.trace.json"
+    },
+    {
+      "answer_id": "A45",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "quota_exhausted",
+        "message": "Provider daily token quota exhausted"
+      },
+      "latency_seconds": 9.758300438988954e-05,
+      "trace_reference": "reports/a6df95a1-f62f-40ad-b7cb-b85c4f44d7c8/A45.trace.json"
+    },
+    {
+      "answer_id": "A46",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "quota_exhausted",
+        "message": "Provider daily token quota exhausted"
+      },
+      "latency_seconds": 8.874999184627086e-05,
+      "trace_reference": "reports/a6df95a1-f62f-40ad-b7cb-b85c4f44d7c8/A46.trace.json"
+    },
+    {
+      "answer_id": "A47",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "quota_exhausted",
+        "message": "Provider daily token quota exhausted"
+      },
+      "latency_seconds": 9.187498653773218e-05,
+      "trace_reference": "reports/a6df95a1-f62f-40ad-b7cb-b85c4f44d7c8/A47.trace.json"
+    },
+    {
+      "answer_id": "A48",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "quota_exhausted",
+        "message": "Provider daily token quota exhausted"
+      },
+      "latency_seconds": 8.450000314041972e-05,
+      "trace_reference": "reports/a6df95a1-f62f-40ad-b7cb-b85c4f44d7c8/A48.trace.json"
+    },
+    {
+      "answer_id": "A49",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "quota_exhausted",
+        "message": "Provider daily token quota exhausted"
+      },
+      "latency_seconds": 7.583299884572625e-05,
+      "trace_reference": "reports/a6df95a1-f62f-40ad-b7cb-b85c4f44d7c8/A49.trace.json"
+    },
+    {
+      "answer_id": "A50",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "quota_exhausted",
+        "message": "Provider daily token quota exhausted"
+      },
+      "latency_seconds": 0.0001604169956408441,
+      "trace_reference": "reports/a6df95a1-f62f-40ad-b7cb-b85c4f44d7c8/A50.trace.json"
+    }
+  ],
+  "scores": {
+    "scheduled_answers": 10,
+    "answer_errors": 9,
+    "P": 9,
+    "G": null,
+    "M": null,
+    "C": null,
+    "extraction_precision": null,
+    "extraction_recall": null,
+    "extraction_f1": null,
+    "joint_precision": null,
+    "joint_recall": null,
+    "joint_f1": null,
+    "gold_claim_coverage": null,
+    "missed_gold_ids": null,
+    "unmatched_prediction_ids": null,
+    "matched_wrong_label_ids": null,
+    "matches": null
+  },
+  "error": null,
+  "finished_at": "2026-10-19T12:58:28.178867+00:00"
+}

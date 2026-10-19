@@ -1,8 +1,8 @@
 {
-  "v1_run": "e137a189-2643-4ee3-90ac-3b11bc8ed417",
-  "v2_run": "938be519-95bb-4d37-ab02-b229c428d432",
-  "joint_f1_delta": -0.40501043841336115,
-  "extraction_f1_delta": -0.42588726513569936,
+  "v1_run": "4e89eb38-f272-45b2-9238-d013ff19c5ac",
+  "v2_run": "28223bfe-9e23-4fb3-acb1-b1ed030c3c03",
+  "joint_f1_delta": -0.553030303030303,
+  "extraction_f1_delta": -0.571969696969697,
   "newly_correct_gold_ids": [],
   "no_longer_correct_gold_ids": [
     "A01:1237:1439",
@@ -21,6 +21,17 @@
     "A03:1918:2069",
     "A03:689:861",
     "A03:862:1043",
+    "A04:1098:1267",
+    "A04:1464:1636",
+    "A04:1637:1798",
+    "A04:1800:1983",
+    "A04:1984:2165",
+    "A04:2166:2361",
+    "A04:2363:2540",
+    "A04:324:493",
+    "A04:494:694",
+    "A04:696:899",
+    "A04:900:1097",
     "A05:1292:1467",
     "A05:1468:1651",
     "A05:1652:1828",
@@ -38,6 +49,13 @@
     "A06:495:697",
     "A06:699:897",
     "A06:898:1081",
+    "A07:1350:1533",
+    "A07:1534:1719",
+    "A07:1721:1919",
+    "A07:1920:2143",
+    "A07:512:698",
+    "A07:700:884",
+    "A07:987:1153",
     "A08:1084:1282",
     "A08:1479:1676",
     "A08:1677:1855",
@@ -63,7 +81,6 @@
     "A10:1823:2004",
     "A10:2005:2200",
     "A10:2201:2372",
-    "A10:371:563",
     "A10:564:733",
     "A10:735:923",
     "A10:924:1087",
@@ -86,22 +103,54 @@
     "A13:511:680",
     "A13:682:902",
     "A13:903:1067",
-    "A15:1075:1236",
-    "A15:1433:1627",
-    "A15:1628:1825",
-    "A15:1827:2026",
-    "A15:2027:2174",
-    "A15:2175:2354",
-    "A15:496:698",
-    "A15:700:889",
-    "A15:890:1074",
     "A16:1198:1422",
     "A16:1614:1797",
     "A16:1799:1976",
     "A16:1977:2138",
     "A16:306:454",
     "A16:620:828",
-    "A16:829:1001"
+    "A16:829:1001",
+    "A19:1068:1268",
+    "A19:1655:1832",
+    "A19:1834:2008",
+    "A19:2009:2201",
+    "A19:2202:2372",
+    "A19:371:555",
+    "A19:556:729",
+    "A19:731:902",
+    "A19:903:1067",
+    "A20:1435:1607",
+    "A20:1608:1752",
+    "A20:306:485",
+    "A20:486:662",
+    "A20:856:1046",
+    "A23:1295:1477",
+    "A23:1478:1662",
+    "A23:1663:1854",
+    "A23:1856:2056",
+    "A23:371:548",
+    "A23:549:744",
+    "A23:746:907",
+    "A23:908:1098",
+    "A24:1092:1287",
+    "A24:1484:1675",
+    "A24:1676:1854",
+    "A24:1856:2025",
+    "A24:2026:2214",
+    "A24:2215:2381",
+    "A24:306:498",
+    "A24:499:683",
+    "A24:685:890",
+    "A24:891:1091",
+    "A27:1230:1392",
+    "A27:1393:1579",
+    "A27:1580:1745",
+    "A27:1747:1938",
+    "A27:1939:2088",
+    "A27:324:493",
+    "A27:494:688",
+    "A27:690:873",
+    "A27:874:1033"
   ],
   "newly_missed_gold_ids": [
     "A01:1237:1439",
@@ -120,6 +169,17 @@
     "A03:1918:2069",
     "A03:689:861",
     "A03:862:1043",
+    "A04:1098:1267",
+    "A04:1464:1636",
+    "A04:1637:1798",
+    "A04:1800:1983",
+    "A04:1984:2165",
+    "A04:2166:2361",
+    "A04:2363:2540",
+    "A04:324:493",
+    "A04:494:694",
+    "A04:696:899",
+    "A04:900:1097",
     "A05:1292:1467",
     "A05:1468:1651",
     "A05:1652:1828",
@@ -138,6 +198,14 @@
     "A06:495:697",
     "A06:699:897",
     "A06:898:1081",
+    "A07:1350:1533",
+    "A07:1534:1719",
+    "A07:1721:1919",
+    "A07:1920:2143",
+    "A07:306:511",
+    "A07:512:698",
+    "A07:700:884",
+    "A07:987:1153",
     "A08:1084:1282",
     "A08:1479:1676",
     "A08:1677:1855",
@@ -163,7 +231,6 @@
     "A10:1823:2004",
     "A10:2005:2200",
     "A10:2201:2372",
-    "A10:371:563",
     "A10:564:733",
     "A10:735:923",
     "A10:924:1087",
@@ -187,16 +254,6 @@
     "A13:511:680",
     "A13:682:902",
     "A13:903:1067",
-    "A15:1075:1236",
-    "A15:1433:1627",
-    "A15:1628:1825",
-    "A15:1827:2026",
-    "A15:2027:2174",
-    "A15:2175:2354",
-    "A15:306:495",
-    "A15:496:698",
-    "A15:700:889",
-    "A15:890:1074",
     "A16:1198:1422",
     "A16:1423:1613",
     "A16:1614:1797",
@@ -205,23 +262,64 @@
     "A16:306:454",
     "A16:455:618",
     "A16:620:828",
-    "A16:829:1001"
+    "A16:829:1001",
+    "A19:1068:1268",
+    "A19:1655:1832",
+    "A19:1834:2008",
+    "A19:2009:2201",
+    "A19:2202:2372",
+    "A19:371:555",
+    "A19:556:729",
+    "A19:731:902",
+    "A19:903:1067",
+    "A20:1435:1607",
+    "A20:1608:1752",
+    "A20:306:485",
+    "A20:486:662",
+    "A20:856:1046",
+    "A23:1295:1477",
+    "A23:1478:1662",
+    "A23:1663:1854",
+    "A23:1856:2056",
+    "A23:371:548",
+    "A23:549:744",
+    "A23:746:907",
+    "A23:908:1098",
+    "A24:1092:1287",
+    "A24:1484:1675",
+    "A24:1676:1854",
+    "A24:1856:2025",
+    "A24:2026:2214",
+    "A24:2215:2381",
+    "A24:306:498",
+    "A24:499:683",
+    "A24:685:890",
+    "A24:891:1091",
+    "A27:1230:1392",
+    "A27:1393:1579",
+    "A27:1580:1745",
+    "A27:1747:1938",
+    "A27:1939:2088",
+    "A27:324:493",
+    "A27:494:688",
+    "A27:690:873",
+    "A27:874:1033"
   ],
   "newly_extracted_gold_ids": [],
   "v1": {
     "scheduled_answers": 40,
-    "answer_errors": 29,
-    "P": 103,
+    "answer_errors": 23,
+    "P": 152,
     "G": 376,
-    "M": 102,
-    "C": 97,
-    "extraction_precision": 0.9902912621359223,
-    "extraction_recall": 0.2712765957446808,
-    "extraction_f1": 0.42588726513569936,
-    "joint_precision": 0.941747572815534,
-    "joint_recall": 0.2579787234042553,
-    "joint_f1": 0.40501043841336115,
-    "gold_claim_coverage": 0.2579787234042553,
+    "M": 151,
+    "C": 146,
+    "extraction_precision": 0.993421052631579,
+    "extraction_recall": 0.4015957446808511,
+    "extraction_f1": 0.571969696969697,
+    "joint_precision": 0.9605263157894737,
+    "joint_recall": 0.3882978723404255,
+    "joint_f1": 0.553030303030303,
+    "gold_claim_coverage": 0.3882978723404255,
     "missed_gold_ids": [
       "A02:1085:1272",
       "A02:1469:1659",
@@ -235,25 +333,7 @@
       "A02:876:1084",
       "A03:335:505",
       "A03:506:687",
-      "A04:1098:1267",
-      "A04:1464:1636",
-      "A04:1637:1798",
-      "A04:1800:1983",
-      "A04:1984:2165",
-      "A04:2166:2361",
-      "A04:2363:2540",
-      "A04:324:493",
-      "A04:494:694",
-      "A04:696:899",
-      "A04:900:1097",
-      "A07:1350:1533",
-      "A07:1534:1719",
-      "A07:1721:1919",
-      "A07:1920:2143",
-      "A07:306:511",
-      "A07:512:698",
-      "A07:700:884",
-      "A07:987:1153",
+      "A10:371:563",
       "A12:1229:1378",
       "A12:1379:1559",
       "A12:1560:1741",
@@ -272,6 +352,16 @@
       "A14:558:756",
       "A14:758:943",
       "A14:944:1127",
+      "A15:1075:1236",
+      "A15:1433:1627",
+      "A15:1628:1825",
+      "A15:1827:2026",
+      "A15:2027:2174",
+      "A15:2175:2354",
+      "A15:306:495",
+      "A15:496:698",
+      "A15:700:889",
+      "A15:890:1074",
       "A17:1055:1247",
       "A17:1444:1607",
       "A17:1608:1785",
@@ -291,24 +381,10 @@
       "A18:491:661",
       "A18:663:840",
       "A18:943:1138",
-      "A19:1068:1268",
       "A19:1465:1654",
-      "A19:1655:1832",
-      "A19:1834:2008",
-      "A19:2009:2201",
-      "A19:2202:2372",
-      "A19:371:555",
-      "A19:556:729",
-      "A19:731:902",
-      "A19:903:1067",
       "A20:1243:1434",
-      "A20:1435:1607",
-      "A20:1608:1752",
       "A20:1754:1949",
-      "A20:306:485",
-      "A20:486:662",
       "A20:664:855",
-      "A20:856:1046",
       "A21:1284:1478",
       "A21:1479:1676",
       "A21:1677:1848",
@@ -327,24 +403,6 @@
       "A22:504:666",
       "A22:668:843",
       "A22:844:1033",
-      "A23:1295:1477",
-      "A23:1478:1662",
-      "A23:1663:1854",
-      "A23:1856:2056",
-      "A23:371:548",
-      "A23:549:744",
-      "A23:746:907",
-      "A23:908:1098",
-      "A24:1092:1287",
-      "A24:1484:1675",
-      "A24:1676:1854",
-      "A24:1856:2025",
-      "A24:2026:2214",
-      "A24:2215:2381",
-      "A24:306:498",
-      "A24:499:683",
-      "A24:685:890",
-      "A24:891:1091",
       "A25:1185:1366",
       "A25:1367:1526",
       "A25:1527:1672",
@@ -364,15 +422,6 @@
       "A26:557:727",
       "A26:729:925",
       "A26:926:1107",
-      "A27:1230:1392",
-      "A27:1393:1579",
-      "A27:1580:1745",
-      "A27:1747:1938",
-      "A27:1939:2088",
-      "A27:324:493",
-      "A27:494:688",
-      "A27:690:873",
-      "A27:874:1033",
       "A28:1123:1302",
       "A28:1499:1671",
       "A28:1672:1819",
@@ -503,8 +552,8 @@
     ],
     "matched_wrong_label_ids": [
       "A06:1432:1621",
+      "A07:306:511",
       "A13:324:510",
-      "A15:306:495",
       "A16:1423:1613",
       "A16:455:618"
     ],
@@ -617,6 +666,83 @@
       {
         "prediction_id": "A03:862:1043",
         "gold_claim_id": "A03:862:1043",
+        "expected_label": "supported",
+        "predicted_label": "supported",
+        "correct": true
+      },
+      {
+        "prediction_id": "A04:1098:1267",
+        "gold_claim_id": "A04:1098:1267",
+        "expected_label": "supported",
+        "predicted_label": "supported",
+        "correct": true
+      },
+      {
+        "prediction_id": "A04:1464:1636",
+        "gold_claim_id": "A04:1464:1636",
+        "expected_label": "supported",
+        "predicted_label": "supported",
+        "correct": true
+      },
+      {
+        "prediction_id": "A04:1637:1798",
+        "gold_claim_id": "A04:1637:1798",
+        "expected_label": "contradicted",
+        "predicted_label": "contradicted",
+        "correct": true
+      },
+      {
+        "prediction_id": "A04:1800:1983",
+        "gold_claim_id": "A04:1800:1983",
+        "expected_label": "contradicted",
+        "predicted_label": "contradicted",
+        "correct": true
+      },
+      {
+        "prediction_id": "A04:1984:2165",
+        "gold_claim_id": "A04:1984:2165",
+        "expected_label": "unknown",
+        "predicted_label": "unknown",
+        "correct": true
+      },
+      {
+        "prediction_id": "A04:2166:2361",
+        "gold_claim_id": "A04:2166:2361",
+        "expected_label": "unknown",
+        "predicted_label": "unknown",
+        "correct": true
+      },
+      {
+        "prediction_id": "A04:2363:2540",
+        "gold_claim_id": "A04:2363:2540",
+        "expected_label": "contradicted",
+        "predicted_label": "contradicted",
+        "correct": true
+      },
+      {
+        "prediction_id": "A04:324:493",
+        "gold_claim_id": "A04:324:493",
+        "expected_label": "contradicted",
+        "predicted_label": "contradicted",
+        "correct": true
+      },
+      {
+        "prediction_id": "A04:494:694",
+        "gold_claim_id": "A04:494:694",
+        "expected_label": "unknown",
+        "predicted_label": "unknown",
+        "correct": true
+      },
+      {
+        "prediction_id": "A04:696:899",
+        "gold_claim_id": "A04:696:899",
+        "expected_label": "unknown",
+        "predicted_label": "unknown",
+        "correct": true
+      },
+      {
+        "prediction_id": "A04:900:1097",
+        "gold_claim_id": "A04:900:1097",
         "expected_label": "supported",
         "predicted_label": "supported",
         "correct": true
@@ -745,6 +871,62 @@
         "gold_claim_id": "A06:898:1081",
         "expected_label": "unknown",
         "predicted_label": "unknown",
+        "correct": true
+      },
+      {
+        "prediction_id": "A07:1350:1533",
+        "gold_claim_id": "A07:1350:1533",
+        "expected_label": "supported",
+        "predicted_label": "supported",
+        "correct": true
+      },
+      {
+        "prediction_id": "A07:1534:1719",
+        "gold_claim_id": "A07:1534:1719",
+        "expected_label": "supported",
+        "predicted_label": "supported",
+        "correct": true
+      },
+      {
+        "prediction_id": "A07:1721:1919",
+        "gold_claim_id": "A07:1721:1919",
+        "expected_label": "unknown",
+        "predicted_label": "unknown",
+        "correct": true
+      },
+      {
+        "prediction_id": "A07:1920:2143",
+        "gold_claim_id": "A07:1920:2143",
+        "expected_label": "contradicted",
+        "predicted_label": "contradicted",
+        "correct": true
+      },
+      {
+        "prediction_id": "A07:306:511",
+        "gold_claim_id": "A07:306:511",
+        "expected_label": "unknown",
+        "predicted_label": "supported",
+        "correct": false
+      },
+      {
+        "prediction_id": "A07:512:698",
+        "gold_claim_id": "A07:512:698",
+        "expected_label": "unknown",
+        "predicted_label": "unknown",
+        "correct": true
+      },
+      {
+        "prediction_id": "A07:700:884",
+        "gold_claim_id": "A07:700:884",
+        "expected_label": "contradicted",
+        "predicted_label": "contradicted",
+        "correct": true
+      },
+      {
+        "prediction_id": "A07:987:1153",
+        "gold_claim_id": "A07:987:1153",
+        "expected_label": "supported",
+        "predicted_label": "supported",
         "correct": true
       },
       {
@@ -923,13 +1105,6 @@
         "correct": true
       },
       {
-        "prediction_id": "A10:371:563",
-        "gold_claim_id": "A10:371:563",
-        "expected_label": "unknown",
-        "predicted_label": "unknown",
-        "correct": true
-      },
-      {
         "prediction_id": "A10:564:733",
         "gold_claim_id": "A10:564:733",
         "expected_label": "supported",
@@ -1091,76 +1266,6 @@
         "correct": true
       },
       {
-        "prediction_id": "A15:1075:1236",
-        "gold_claim_id": "A15:1075:1236",
-        "expected_label": "supported",
-        "predicted_label": "supported",
-        "correct": true
-      },
-      {
-        "prediction_id": "A15:1433:1627",
-        "gold_claim_id": "A15:1433:1627",
-        "expected_label": "unknown",
-        "predicted_label": "unknown",
-        "correct": true
-      },
-      {
-        "prediction_id": "A15:1628:1825",
-        "gold_claim_id": "A15:1628:1825",
-        "expected_label": "unknown",
-        "predicted_label": "unknown",
-        "correct": true
-      },
-      {
-        "prediction_id": "A15:1827:2026",
-        "gold_claim_id": "A15:1827:2026",
-        "expected_label": "supported",
-        "predicted_label": "supported",
-        "correct": true
-      },
-      {
-        "prediction_id": "A15:2027:2174",
-        "gold_claim_id": "A15:2027:2174",
-        "expected_label": "supported",
-        "predicted_label": "supported",
-        "correct": true
-      },
-      {
-        "prediction_id": "A15:2175:2354",
-        "gold_claim_id": "A15:2175:2354",
-        "expected_label": "contradicted",
-        "predicted_label": "contradicted",
-        "correct": true
-      },
-      {
-        "prediction_id": "A15:306:495",
-        "gold_claim_id": "A15:306:495",
-        "expected_label": "unknown",
-        "predicted_label": "supported",
-        "correct": false
-      },
-      {
-        "prediction_id": "A15:496:698",
-        "gold_claim_id": "A15:496:698",
-        "expected_label": "unknown",
-        "predicted_label": "unknown",
-        "correct": true
-      },
-      {
-        "prediction_id": "A15:700:889",
-        "gold_claim_id": "A15:700:889",
-        "expected_label": "contradicted",
-        "predicted_label": "contradicted",
-        "correct": true
-      },
-      {
-        "prediction_id": "A15:890:1074",
-        "gold_claim_id": "A15:890:1074",
-        "expected_label": "contradicted",
-        "predicted_label": "contradicted",
-        "correct": true
-      },
-      {
         "prediction_id": "A16:1198:1422",
         "gold_claim_id": "A16:1198:1422",
         "expected_label": "contradicted",
@@ -1221,6 +1326,293 @@
         "gold_claim_id": "A16:829:1001",
         "expected_label": "supported",
         "predicted_label": "supported",
+        "correct": true
+      },
+      {
+        "prediction_id": "A19:1068:1268",
+        "gold_claim_id": "A19:1068:1268",
+        "expected_label": "unknown",
+        "predicted_label": "unknown",
+        "correct": true
+      },
+      {
+        "prediction_id": "A19:1655:1832",
+        "gold_claim_id": "A19:1655:1832",
+        "expected_label": "contradicted",
+        "predicted_label": "contradicted",
+        "correct": true
+      },
+      {
+        "prediction_id": "A19:1834:2008",
+        "gold_claim_id": "A19:1834:2008",
+        "expected_label": "supported",
+        "predicted_label": "supported",
+        "correct": true
+      },
+      {
+        "prediction_id": "A19:2009:2201",
+        "gold_claim_id": "A19:2009:2201",
+        "expected_label": "unknown",
+        "predicted_label": "unknown",
+        "correct": true
+      },
+      {
+        "prediction_id": "A19:2202:2372",
+        "gold_claim_id": "A19:2202:2372",
+        "expected_label": "unknown",
+        "predicted_label": "unknown",
+        "correct": true
+      },
+      {
+        "prediction_id": "A19:371:555",
+        "gold_claim_id": "A19:371:555",
+        "expected_label": "contradicted",
+        "predicted_label": "contradicted",
+        "correct": true
+      },
+      {
+        "prediction_id": "A19:556:729",
+        "gold_claim_id": "A19:556:729",
+        "expected_label": "contradicted",
+        "predicted_label": "contradicted",
+        "correct": true
+      },
+      {
+        "prediction_id": "A19:731:902",
+        "gold_claim_id": "A19:731:902",
+        "expected_label": "contradicted",
+        "predicted_label": "contradicted",
+        "correct": true
+      },
+      {
+        "prediction_id": "A19:903:1067",
+        "gold_claim_id": "A19:903:1067",
+        "expected_label": "supported",
+        "predicted_label": "supported",
+        "correct": true
+      },
+      {
+        "prediction_id": "A20:1435:1607",
+        "gold_claim_id": "A20:1435:1607",
+        "expected_label": "supported",
+        "predicted_label": "supported",
+        "correct": true
+      },
+      {
+        "prediction_id": "A20:1608:1752",
+        "gold_claim_id": "A20:1608:1752",
+        "expected_label": "supported",
+        "predicted_label": "supported",
+        "correct": true
+      },
+      {
+        "prediction_id": "A20:306:485",
+        "gold_claim_id": "A20:306:485",
+        "expected_label": "contradicted",
+        "predicted_label": "contradicted",
+        "correct": true
+      },
+      {
+        "prediction_id": "A20:486:662",
+        "gold_claim_id": "A20:486:662",
+        "expected_label": "contradicted",
+        "predicted_label": "contradicted",
+        "correct": true
+      },
+      {
+        "prediction_id": "A20:856:1046",
+        "gold_claim_id": "A20:856:1046",
+        "expected_label": "supported",
+        "predicted_label": "supported",
+        "correct": true
+      },
+      {
+        "prediction_id": "A23:1295:1477",
+        "gold_claim_id": "A23:1295:1477",
+        "expected_label": "contradicted",
+        "predicted_label": "contradicted",
+        "correct": true
+      },
+      {
+        "prediction_id": "A23:1478:1662",
+        "gold_claim_id": "A23:1478:1662",
+        "expected_label": "unknown",
+        "predicted_label": "unknown",
+        "correct": true
+      },
+      {
+        "prediction_id": "A23:1663:1854",
+        "gold_claim_id": "A23:1663:1854",
+        "expected_label": "supported",
+        "predicted_label": "supported",
+        "correct": true
+      },
+      {
+        "prediction_id": "A23:1856:2056",
+        "gold_claim_id": "A23:1856:2056",
+        "expected_label": "supported",
+        "predicted_label": "supported",
+        "correct": true
+      },
+      {
+        "prediction_id": "A23:371:548",
+        "gold_claim_id": "A23:371:548",
+        "expected_label": "contradicted",
+        "predicted_label": "contradicted",
+        "correct": true
+      },
+      {
+        "prediction_id": "A23:549:744",
+        "gold_claim_id": "A23:549:744",
+        "expected_label": "unknown",
+        "predicted_label": "unknown",
+        "correct": true
+      },
+      {
+        "prediction_id": "A23:746:907",
+        "gold_claim_id": "A23:746:907",
+        "expected_label": "supported",
+        "predicted_label": "supported",
+        "correct": true
+      },
+      {
+        "prediction_id": "A23:908:1098",
+        "gold_claim_id": "A23:908:1098",
+        "expected_label": "unknown",
+        "predicted_label": "unknown",
+        "correct": true
+      },
+      {
+        "prediction_id": "A24:1092:1287",
+        "gold_claim_id": "A24:1092:1287",
+        "expected_label": "unknown",
+        "predicted_label": "unknown",
+        "correct": true
+      },
+      {
+        "prediction_id": "A24:1484:1675",
+        "gold_claim_id": "A24:1484:1675",
+        "expected_label": "supported",
+        "predicted_label": "supported",
+        "correct": true
+      },
+      {
+        "prediction_id": "A24:1676:1854",
+        "gold_claim_id": "A24:1676:1854",
+        "expected_label": "contradicted",
+        "predicted_label": "contradicted",
+        "correct": true
+      },
+      {
+        "prediction_id": "A24:1856:2025",
+        "gold_claim_id": "A24:1856:2025",
+        "expected_label": "supported",
+        "predicted_label": "supported",
+        "correct": true
+      },
+      {
+        "prediction_id": "A24:2026:2214",
+        "gold_claim_id": "A24:2026:2214",
+        "expected_label": "supported",
+        "predicted_label": "supported",
+        "correct": true
+      },
+      {
+        "prediction_id": "A24:2215:2381",
+        "gold_claim_id": "A24:2215:2381",
+        "expected_label": "supported",
+        "predicted_label": "supported",
+        "correct": true
+      },
+      {
+        "prediction_id": "A24:306:498",
+        "gold_claim_id": "A24:306:498",
+        "expected_label": "unknown",
+        "predicted_label": "unknown",
+        "correct": true
+      },
+      {
+        "prediction_id": "A24:499:683",
+        "gold_claim_id": "A24:499:683",
+        "expected_label": "contradicted",
+        "predicted_label": "contradicted",
+        "correct": true
+      },
+      {
+        "prediction_id": "A24:685:890",
+        "gold_claim_id": "A24:685:890",
+        "expected_label": "unknown",
+        "predicted_label": "unknown",
+        "correct": true
+      },
+      {
+        "prediction_id": "A24:891:1091",
+        "gold_claim_id": "A24:891:1091",
+        "expected_label": "unknown",
+        "predicted_label": "unknown",
+        "correct": true
+      },
+      {
+        "prediction_id": "A27:1230:1392",
+        "gold_claim_id": "A27:1230:1392",
+        "expected_label": "supported",
+        "predicted_label": "supported",
+        "correct": true
+      },
+      {
+        "prediction_id": "A27:1393:1579",
+        "gold_claim_id": "A27:1393:1579",
+        "expected_label": "contradicted",
+        "predicted_label": "contradicted",
+        "correct": true
+      },
+      {
+        "prediction_id": "A27:1580:1745",
+        "gold_claim_id": "A27:1580:1745",
+        "expected_label": "supported",
+        "predicted_label": "supported",
+        "correct": true
+      },
+      {
+        "prediction_id": "A27:1747:1938",
+        "gold_claim_id": "A27:1747:1938",
+        "expected_label": "unknown",
+        "predicted_label": "unknown",
+        "correct": true
+      },
+      {
+        "prediction_id": "A27:1939:2088",
+        "gold_claim_id": "A27:1939:2088",
+        "expected_label": "supported",
+        "predicted_label": "supported",
+        "correct": true
+      },
+      {
+        "prediction_id": "A27:324:493",
+        "gold_claim_id": "A27:324:493",
+        "expected_label": "unknown",
+        "predicted_label": "unknown",
+        "correct": true
+      },
+      {
+        "prediction_id": "A27:494:688",
+        "gold_claim_id": "A27:494:688",
+        "expected_label": "unknown",
+        "predicted_label": "unknown",
+        "correct": true
+      },
+      {
+        "prediction_id": "A27:690:873",
+        "gold_claim_id": "A27:690:873",
+        "expected_label": "contradicted",
+        "predicted_label": "contradicted",
+        "correct": true
+      },
+      {
+        "prediction_id": "A27:874:1033",
+        "gold_claim_id": "A27:874:1033",
+        "expected_label": "contradicted",
+        "predicted_label": "contradicted",
         "correct": true
       }
     ]

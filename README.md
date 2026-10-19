@@ -8,7 +8,7 @@ Repository: [harshith-murali/kasparro-ai](https://github.com/harshith-murali/kas
 
 ## Actual evidence and remaining blocker
 
-**81 controlled tests pass**, including real PostgreSQL tests. The main v1 development attempt produced 103 accepted claims, joint F1 **0.405010**, and 29 answer errors. Groq's daily token quota then blocked the v2 development attempt and both frozen check attempts; those reports retain quota errors and check quality remains null. There is no measured live v2 improvement.
+**81 controlled tests pass**, including real PostgreSQL tests. The main v1 development attempt produced 103 accepted claims, joint F1 **0.405010**, and 29 answer errors. Groq's daily token quota then blocked the v2 development attempt and both original frozen check attempts. A later replacement-key v1 check rerun produced nine accepted claims for A41 before the daily quota was exhausted again; its other nine answers preserve quota errors. All check quality remains null. There is no measured live v2 improvement.
 
 A separately labeled, zero-request replay of saved baseline outputs through the v2 quote resolver recovered seven answers and produced joint F1 **0.588235**. This is controlled postprocessing evidence, **not a live v2 run**. See [analysis](ANALYSIS.md), [submission status](SUBMISSION.md), [live-attempt manifest](reports/live-status.json), and [actual tests](reports/tests.txt). More provider quota is needed to finish the required live-quality experiment.
 

@@ -1,0 +1,112 @@
+[
+  {
+    "answer_id": "A41",
+    "status": "error",
+    "claims": [],
+    "error": {
+      "type": "quota_exhausted",
+      "message": "Provider daily token quota exhausted"
+    },
+    "latency_seconds": 0.1433655829896452,
+    "trace_reference": "reports/f0c49d37-ace6-419d-af74-10e07a384b9b/A41.trace.json"
+  },
+  {
+    "answer_id": "A42",
+    "status": "error",
+    "claims": [],
+    "error": {
+      "type": "quota_exhausted",
+      "message": "Provider daily token quota exhausted"
+    },
+    "latency_seconds": 0.00013349999790079892,
+    "trace_reference": "reports/f0c49d37-ace6-419d-af74-10e07a384b9b/A42.trace.json"
+  },
+  {
+    "answer_id": "A43",
+    "status": "error",
+    "claims": [],
+    "error": {
+      "type": "quota_exhausted",
+      "message": "Provider daily token quota exhausted"
+    },
+    "latency_seconds": 0.0029553749918704852,
+    "trace_reference": "reports/f0c49d37-ace6-419d-af74-10e07a384b9b/A43.trace.json"
+  },
+  {
+    "answer_id": "A44",
+    "status": "error",
+    "claims": [],
+    "error": {
+      "type": "quota_exhausted",
+      "message": "Provider daily token quota exhausted"
+    },
+    "latency_seconds": 0.00015829199401196092,
+    "trace_reference": "reports/f0c49d37-ace6-419d-af74-10e07a384b9b/A44.trace.json"
+  },
+  {
+    "answer_id": "A45",
+    "status": "error",
+    "claims": [],
+    "error": {
+      "type": "quota_exhausted",
+      "message": "Provider daily token quota exhausted"
+    },
+    "latency_seconds": 0.0009181250061374158,
+    "trace_reference": "reports/f0c49d37-ace6-419d-af74-10e07a384b9b/A45.trace.json"
+  },
+  {
+    "answer_id": "A46",
+    "status": "error",
+    "claims": [],
+    "error": {
+      "type": "quota_exhausted",
+      "message": "Provider daily token quota exhausted"
+    },
+    "latency_seconds": 0.00012749999586958438,
+    "trace_reference": "reports/f0c49d37-ace6-419d-af74-10e07a384b9b/A46.trace.json"
+  },
+  {
+    "answer_id": "A47",
+    "status": "error",
+    "claims": [],
+    "error": {
+      "type": "quota_exhausted",
+      "message": "Provider daily token quota exhausted"
+    },
+    "latency_seconds": 0.00011900000390596688,
+    "trace_reference": "reports/f0c49d37-ace6-419d-af74-10e07a384b9b/A47.trace.json"
+  },
+  {
+    "answer_id": "A48",
+    "status": "error",
+    "claims": [],
+    "error": {
+      "type": "quota_exhausted",
+      "message": "Provider daily token quota exhausted"
+    },
+    "latency_seconds": 0.00010441700578667223,
+    "trace_reference": "reports/f0c49d37-ace6-419d-af74-10e07a384b9b/A48.trace.json"
+  },
+  {
+    "answer_id": "A49",
+    "status": "error",
+    "claims": [],
+    "error": {
+      "type": "quota_exhausted",
+      "message": "Provider daily token quota exhausted"
+    },
+    "latency_seconds": 9.84170037554577e-05,
+    "trace_reference": "reports/f0c49d37-ace6-419d-af74-10e07a384b9b/A49.trace.json"
+  },
+  {
+    "answer_id": "A50",
+    "status": "error",
+    "claims": [],
+    "error": {
+      "type": "quota_exhausted",
+      "message": "Provider daily token quota exhausted"
+    },
+    "latency_seconds": 8.870800957083702e-05,
+    "trace_reference": "reports/f0c49d37-ace6-419d-af74-10e07a384b9b/A50.trace.json"
+  }
+]

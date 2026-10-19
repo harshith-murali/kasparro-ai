@@ -4,18 +4,22 @@
 
 I used Groq because I did not have credits for OpenAI, Anthropic, or Gemini. The model is `openai/gpt-oss-120b` hosted by Groq; these are not OpenAI API runs. Groq is a deviation from the assessment's listed providers. No recruiter approval is represented.
 
-All four provider-backed run attempts were saved with PostgreSQL outcomes and local traces. Groq's daily token quota was exhausted during the baseline. The later attempts therefore contain quota errors rather than accepted model predictions. **The required live-quality experiment is unfinished.** The main live comparison is confounded by provider availability and cannot establish the effect of v2.
+The original four provider-backed run attempts, plus a frozen v1 check rerun after credential replacement, were saved with PostgreSQL outcomes and local traces. Groq's daily token quota was exhausted during the baseline. The v2 development and original check attempts therefore contain quota errors rather than accepted model predictions. A replacement-key check rerun produced nine accepted claims for A41 before quota was exhausted again. **The required live-quality experiment is unfinished.** The main live comparison is confounded by provider availability and cannot establish the effect of v2.
 
 | Attempt | Run ID | Answers | Accepted claims | Answer errors | Joint F1 |
 |---|---|---:|---:|---:|---:|
-| v1 development | e137a189-2643-4ee3-90ac-3b11bc8ed417 | 40 | 103 | 29 | 0.405010 |
-| v2 development | 938be519-95bb-4d37-ab02-b229c428d432 | 40 | 0 | 40 | 0.000000 |
-| v1 check | f9c567ec-5dc9-489c-ae52-2966c05fc05a | 10 | 0 | 10 | null |
-| v2 check | 049197e2-386d-4a74-b9e7-578698130862 | 10 | 0 | 10 | null |
+| v1 development (initial) | e137a189-2643-4ee3-90ac-3b11bc8ed417 | 40 | 103 | 29 | 0.405010 |
+| v2 development (initial) | 938be519-95bb-4d37-ab02-b229c428d432 | 40 | 0 | 40 | 0.000000 |
+| v1 check (initial) | f9c567ec-5dc9-489c-ae52-2966c05fc05a | 10 | 0 | 10 | null |
+| v2 check (initial) | 049197e2-386d-4a74-b9e7-578698130862 | 10 | 0 | 10 | null |
+| **v1 development (rerun)** | `4e89eb38-f272-45b2-9238-d013ff19c5ac` | 40 | 152 | 23 | **0.553030** |
+| **v2 development (rerun)** | `28223bfe-9e23-4fb3-acb1-b1ed030c3c03` | 40 | 0 | 40 | 0.000000 |
+| **v1 check (rerun)** | `f0c49d37-ace6-419d-af74-10e07a384b9b` | 10 | 0 | 10 | null |
+| **v2 check (rerun)** | `bf265b99-c6d4-405d-858b-4db90932a77c` | 10 | 0 | 10 | null |
 
 The baseline has G=376, P=103, M=102, C=97. Extraction F1 is 0.425887; joint F1 is 0.405010; correct-gold coverage is 97/376 = 0.257979. Its 29 answer errors are nine invalid outputs and twenty daily-quota errors. Missing, extra and wrong-label IDs are in its saved report. Nothing is dropped from the scheduled denominator.
 
-The live v2 score delta is -0.405010. All forty v2 answers failed on quota, so this is not evidence that quote resolution reduced quality. Both check runs retain null gold-dependent fields, not zero quality scores. The account was contacted at the start of each attempt; after an explicit daily-quota response, the provider circuit breaker records the same sanitized quota error for remaining answers without repeatedly contacting that exhausted quota. These are run attempts, not 100 successful model inferences.
+The live v2 score delta is -0.405010. All forty v2 answers failed on quota, so this is not evidence that quote resolution reduced quality. All check attempts retain null gold-dependent fields, not zero quality scores. The original v1 check `f9c567ec-5dc9-489c-ae52-2966c05fc05a` (ten quota errors) remains preserved. The replacement-key rerun accepted A41 with nine claims, then recorded nine quota errors; no code, prompt, data, settings or freeze changed. The account was contacted at the start of each attempt; after an explicit daily-quota response, the provider circuit breaker records the same sanitized quota error for remaining answers without repeatedly contacting that exhausted quota. These are run attempts, not 100 successful model inferences.
 
 ## One targeted improvement
 
@@ -53,6 +57,6 @@ Two earlier integration attempts were interrupted after discovering Groq JSON/to
 
 Final-check inputs were loaded by controlled tests and provider-backed attempts, but no final-check gold exists locally and no tuning on final-check quality occurred. This is not claimed as a fully blind benchmark.
 
-Unfinished: rerun all four live evaluations with sufficient quota, obtain real v2 and final-check predictions, and assess the measured live effect and regressions. The reviewer must also decide whether the Groq provider deviation is acceptable. No hosted deployment, authentication, durable recovery, idempotency or UI is provided; these were outside required scope.
+Unfinished: rerun all four live evaluations with sufficient quota, obtain live v2 development and fuller final-check predictions, and assess the measured live effect and regressions. The reviewer must also decide whether the Groq provider deviation is acceptable. No hosted deployment, authentication, durable recovery, idempotency or UI is provided; these were outside required scope.
 
 Timing is recorded in WORK_LOG.md. Live work stopped at the daily-quota blocker; the process did not wait for tomorrow's quota reset or fabricate successful results.
