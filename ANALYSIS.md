@@ -1,6 +1,6 @@
 # Experiment status and ownership
 
-No baseline live run has been performed. No measured model quality, improvement, regression or live model/tool exchange is available. Four live runs remain mandatory before this can satisfy the assessment.
+The user subsequently supplied a Groq credential and asked to disclose that Groq was used because they had no credits for the listed providers. A real Groq tool exchange is saved in `reports/provider-checks/A01-probe.json`. Full baseline evaluation is now in progress; no measured v1/v2 quality comparison is claimed yet. Groq is a disclosed provider deviation, with no recruiter approval represented.
 
 ## Provisional targeted change
 
@@ -22,7 +22,7 @@ This is a risk-based proposal, not a diagnosis from a completed baseline. After 
 
 Codex generated the Python implementation, tests, prompts and documentation, installed dependencies, ran the controlled suite, and verified real PostgreSQL persistence/retrieval. The human user has not independently verified the submission. They should describe only checks they actually perform when submitting.
 
-No API request was made with the inherited environment key because the user reported not owning an OpenAI/Anthropic/Gemini key. Grok would need recruiter approval because it is outside the listed providers. No final-check labels are present. Final-check input records were loaded by controlled API tests; no live final-check inference or quality-based tuning occurred. Do not describe the checks as a fully blind benchmark.
+The inherited OpenAI environment key was not used. The user later supplied their own Groq credential, which is stored only in the ignored local `.env`. Groq requests and real fact-tool calls have now been made. Initial integration attempts were interrupted after discovering Groq JSON/tool incompatibilities and rate-limit behavior; their partial evidence remains saved as failed runs. The verified shared adapter separates batched tool lookup from final JSON mode. No final-check labels are present. Final-check input records were loaded by controlled API tests; no live final-check inference or quality-based tuning occurred. Do not describe the checks as a fully blind benchmark.
 
 Semantic extraction completeness, sentence boundaries, catalogue reasoning and occurrence selection depend on the model and remain unmeasured. Programmatic validation ensures structural consistency, not factual correctness. No hosted deployment, UI, authentication, durable recovery, concurrency or idempotency is implemented; these are outside the required scope. The endpoint runs evaluation synchronously and may take several minutes.
 
