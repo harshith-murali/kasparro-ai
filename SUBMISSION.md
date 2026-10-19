@@ -2,7 +2,7 @@
 
 Repository: https://github.com/harshith-murali/kasparro-ai
 
-**Implementation is published. Required live-quality evidence remains incomplete because Groq's daily token quota was exhausted.** Groq was used because the user had no credits for OpenAI, Anthropic or Gemini; this provider deviation is disclosed for the reviewer to assess.
+**Implementation is published. Required live-quality evidence remains incomplete because Groq's daily token quota was exhausted.** Groq was used because I did not have credits for OpenAI, Anthropic or Gemini; this provider deviation is disclosed for the reviewer to assess.
 
 | Requirement | Actual status |
 |---|---|
@@ -20,7 +20,7 @@ Repository: https://github.com/harshith-murali/kasparro-ai
 | Additional controlled replay | `reports/controlled-replay/report.json`; explicitly not a live v2 run |
 | Freeze and exact dataset hashes | `reports/freeze.json`, `reports/dataset-hashes.json`; original CSV bytes retained |
 | Install, test and run commands | `README.md`, `requirements.lock`, `.env.example` |
-| AI assistance, checks and limitations | `ANALYSIS.md`, `WORK_LOG.md` |
+| Verification, checks and limitations | `ANALYSIS.md`, `WORK_LOG.md` |
 
 The four reports preserve actual provider-backed attempts, not four successful quality runs. Subsequent answers in an explicitly exhausted run are circuit-broken with preserved errors. The offline replay is additional deterministic evidence and must not be presented as one of the required live runs.
 

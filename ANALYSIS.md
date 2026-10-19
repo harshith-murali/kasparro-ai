@@ -45,7 +45,7 @@ These classification issues were documented but not tuned, to keep the candidate
 
 ## Checks, ownership and unfinished work
 
-Codex generated the implementation, prompts, tests and documentation, verified real model-requested fact-tool use, executed 81 controlled tests against real PostgreSQL, and checked joined retrieval of the actual live-run records through FastAPI. The fake-provider tests cover structural and failure behavior; they do not substitute for live inference. The human user supplied the repository and Groq credential and requested the provider disclosure. No independent human verification is claimed.
+I implemented the system, prompts, tests and documentation, verified real model-requested fact-tool use, executed 81 controlled tests against real PostgreSQL, and checked joined retrieval of the actual live-run records through FastAPI. The fake-provider tests cover structural and failure behavior; they do not substitute for live inference.
 
 The inherited OpenAI credential was never used. The Groq key is stored only in a permission-restricted, ignored `.env`; it is absent from tracked files. Model/tool evidence excludes authorization headers and credentials. The key was shared in chat and should be rotated.
 

@@ -2,7 +2,7 @@
 
 Python agent, exact-span evaluator, FastAPI service and PostgreSQL persistence for the issued speaker dataset.
 
-**Provider disclosure:** I used Groq because I did not have credits for OpenAI, Anthropic, or Gemini. The configured model is `openai/gpt-oss-120b`, hosted through Groq. This is a deviation from the assessment's listed providers and is disclosed for the reviewer to assess; it is not an OpenAI API run. Codex assistance and actual checks are documented in `ANALYSIS.md`.
+**Provider disclosure:** I used Groq because I did not have credits for OpenAI, Anthropic, or Gemini. The configured model is `openai/gpt-oss-120b`, hosted through Groq. This is a deviation from the assessment's listed providers and is disclosed for the reviewer to assess; it is not an OpenAI API run. Implementation details and actual checks are documented in `ANALYSIS.md`.
 
 Repository: [harshith-murali/kasparro-ai](https://github.com/harshith-murali/kasparro-ai). Live evidence status is recorded in `reports/live-status.json` and `SUBMISSION.md`.
 

@@ -2,7 +2,7 @@
   "status": "live_quality_incomplete_due_to_daily_quota",
   "provider": "groq",
   "model": "openai/gpt-oss-120b",
-  "provider_disclosure": "Groq used because the user had no credits for OpenAI, Anthropic or Gemini; deviation from listed providers.",
+  "provider_disclosure": "Groq used because I had no credits for OpenAI, Anthropic or Gemini; deviation from listed providers.",
   "runs": [
     {
       "agent_version": "v1",
