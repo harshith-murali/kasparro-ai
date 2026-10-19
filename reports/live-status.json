@@ -1,0 +1,33 @@
+{
+  "status": "blocked_credentials",
+  "live_requests_made": 0,
+  "reason": "User has no credentials for the assessment allowed providers. Inherited environment key was not used.",
+  "intended_runs": [
+    {
+      "agent_version": "v1",
+      "split": "development",
+      "status": "not_started",
+      "report": null
+    },
+    {
+      "agent_version": "v2",
+      "split": "development",
+      "status": "not_started",
+      "report": null
+    },
+    {
+      "agent_version": "v1",
+      "split": "check",
+      "status": "not_started",
+      "report": null
+    },
+    {
+      "agent_version": "v2",
+      "split": "check",
+      "status": "not_started",
+      "report": null
+    }
+  ],
+  "quality_metrics": null,
+  "live_tool_exchange": null
+}
