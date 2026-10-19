@@ -1,0 +1,3 @@
+# Preserve issued CSV bytes, including CRLF and embedded line breaks.
+*.csv -text
+*.docx binary
