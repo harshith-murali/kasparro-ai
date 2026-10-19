@@ -24,3 +24,15 @@ Packaging timestamp: 2026-10-19T13:35:11.309318+05:30
 - Preserved two interrupted integration attempts as failed runs, then started the full baseline using the corrected common adapter. These failed attempts are not the main quality comparison.
 - Expanded controlled suite: 75 passed against a real isolated PostgreSQL database.
 - Configured the supplied origin. `.env` is ignored and permission-restricted; tracked-file scanning found no copy of the supplied credential.
+
+## Final experiment outcomes
+
+- Main v1 development completed all 40 answer outcomes: 103 accepted claims; 9 invalid-output errors and 20 daily-quota errors; G=376, M=102, C=97; joint F1 0.405010.
+- Inspected all nine rejected outputs. Seven had exact unique quotes with incorrect model occurrence counters. Implemented only v2 unique-quote location resolution; v1 behavior and both identical prompts are preserved.
+- Final controlled suite: 81 passed. New checks verify preserved v1 rejection, unique-quote recovery in v2, and continued rejection of altered Unicode, duplicates and ambiguous repeated quotes.
+- Controlled replay of recorded baseline messages recovered seven answers, 65 claims and 63 correct exact matches; joint F1 0.588235. Replay made zero provider requests and is explicitly not live v2 evidence.
+- The live v2 development attempt produced 40 daily-quota error outcomes. Froze both versions after development attempts, then saved both check attempts with 10 daily-quota errors each and null quality scores. One premature freeze command was correctly blocked while v2 was still processing; no check requests passed the guard at that time.
+- All four attempts preserve 100 terminal answer rows. Required live quality is incomplete; the main live comparison is confounded by quota. No successful candidate/check outputs or score gain were invented.
+- Published the implementation and requested Groq disclosure to the supplied GitHub repository. Final update contains all attempts, controlled replay, actual test output and explicit limitations.
+
+Final evidence packaging timestamp: 2026-10-19T14:23:24.508686+05:30

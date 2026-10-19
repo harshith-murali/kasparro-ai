@@ -1,26 +1,59 @@
 {
-  "status": "in_progress",
+  "status": "live_quality_incomplete_due_to_daily_quota",
   "provider": "groq",
   "model": "openai/gpt-oss-120b",
-  "provider_deviation": "Groq used because the user had no credits for OpenAI, Anthropic or Gemini.",
+  "provider_disclosure": "Groq used because the user had no credits for OpenAI, Anthropic or Gemini; deviation from listed providers.",
   "runs": [
     {
-      "run_id": "9733ded9-c4a7-41bb-9954-1320273704eb",
-      "version": "v1",
+      "agent_version": "v1",
       "split": "development",
-      "status": "processing",
-      "answers": 1,
-      "errors": 1
+      "run_id": "e137a189-2643-4ee3-90ac-3b11bc8ed417",
+      "report": "reports/e137a189-2643-4ee3-90ac-3b11bc8ed417/report.json",
+      "processing_status": "completed",
+      "answer_errors": 29,
+      "accepted_predictions": 103,
+      "joint_f1": 0.40501043841336115
     },
     {
-      "run_id": "547a2293-5a2f-4f96-bff1-0178f25766d8",
-      "version": "v1",
+      "agent_version": "v2",
       "split": "development",
-      "status": "failed",
-      "answers": 14,
-      "errors": 12
+      "run_id": "938be519-95bb-4d37-ab02-b229c428d432",
+      "report": "reports/938be519-95bb-4d37-ab02-b229c428d432/report.json",
+      "processing_status": "completed",
+      "answer_errors": 40,
+      "accepted_predictions": 0,
+      "joint_f1": 0.0
+    },
+    {
+      "agent_version": "v1",
+      "split": "check",
+      "run_id": "f9c567ec-5dc9-489c-ae52-2966c05fc05a",
+      "report": "reports/f9c567ec-5dc9-489c-ae52-2966c05fc05a/report.json",
+      "processing_status": "completed",
+      "answer_errors": 10,
+      "accepted_predictions": 0,
+      "joint_f1": null
+    },
+    {
+      "agent_version": "v2",
+      "split": "check",
+      "run_id": "049197e2-386d-4a74-b9e7-578698130862",
+      "report": "reports/049197e2-386d-4a74-b9e7-578698130862/report.json",
+      "processing_status": "completed",
+      "answer_errors": 10,
+      "accepted_predictions": 0,
+      "joint_f1": null
     }
   ],
+  "live_comparison": "reports/comparison.json",
+  "comparison_is_conclusive": false,
+  "controlled_replay": "reports/controlled-replay/report.json",
+  "controlled_replay_is_live": false,
   "live_tool_exchange": "reports/provider-checks/A01-probe.json",
-  "comparison": null
+  "failed_integration_attempts": [
+    "547a2293-5a2f-4f96-bff1-0178f25766d8",
+    "9733ded9-c4a7-41bb-9954-1320273704eb"
+  ],
+  "required_next_step": "Obtain sufficient quota and rerun all four frozen evaluations.",
+  "daily_quota_behavior": "After an explicit daily quota failure, remaining answers preserve errors without repeating exhausted requests."
 }

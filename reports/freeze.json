@@ -1,0 +1,32 @@
+{
+  "files": {
+    "kasparro/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "kasparro/__main__.py": "9592675d5390984e34afa41ce8e38f8e04d70f509c0277e2855f9cf8f276a602",
+    "kasparro/agent.py": "a4b398c676c1567a3dea764eab5e63d071ebece265243d06ad5072443300ed91",
+    "kasparro/api.py": "30cde44ef5bc7dcbb880e2853e3ae06e3be13a70c743a8e8b4b7740938154bc4",
+    "kasparro/data.py": "f09d5decff0db0c9c9eefceb842bcd211a729abbbe4d236d108326d28952e986",
+    "kasparro/evaluation.py": "83978888fa7cd0d1b8e200b76e83836a64e17dec31ecdef244b6d02da3dbb900",
+    "kasparro/freeze.py": "e75ecd22d1571e80694002ae14f179a69a30b910ba2b12053f3f3137f29e1608",
+    "kasparro/models.py": "aca0c7f03f3d70be3b541ef1471b0d329bddb0d54daa4a768bbe7275d72a5046",
+    "kasparro/runner.py": "1577f2c94cc8f28e858555fbabcfe9a92207c770501a477086d3caf5e867ae83",
+    "kasparro/store.py": "dcdf8091b24ecb3448387f30c193808f9e081d61266b62946251f4a5b5ba1bfd",
+    "prompts/v1.txt": "2ddcd6ea9ab85adfd27bb1712639e60f634f3da9dc61405c5d7fb542beff7cbb",
+    "prompts/v2.txt": "2ddcd6ea9ab85adfd27bb1712639e60f634f3da9dc61405c5d7fb542beff7cbb",
+    "schema.sql": "9d01e63757de517979cf0d38dba474f3d4466a913f3ee966c783cb2c317e5e85",
+    "requirements.lock": "fd1e80f4292aae1b50a0f9c508f43711fdfcb9929a66e8f4032cf9f8b3357fe4"
+  },
+  "datasets": {
+    "answers.csv": "fa28e813ea54b4e5ea985585f22f084d826241e1182accbc27ace17066125724",
+    "brand_facts.csv": "2190d40fad2dd167ef2437956c43d595aaf2554ea673a4789b9343cb7e2936f2",
+    "development_gold.csv": "afe84cc78f304afb6a4aaa505dd7504af80fcbf8bc507806aa5ff0aab6bf4850"
+  },
+  "settings": {
+    "model": "openai/gpt-oss-120b",
+    "provider": "groq",
+    "timeout_seconds": 60.0,
+    "temperature": 0.0,
+    "max_tokens": 6000,
+    "max_turns": 3,
+    "request_interval_seconds": 0.0
+  }
+}

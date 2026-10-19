@@ -6,6 +6,12 @@ Python agent, exact-span evaluator, FastAPI service and PostgreSQL persistence f
 
 Repository: [harshith-murali/kasparro-ai](https://github.com/harshith-murali/kasparro-ai). Live evidence status is recorded in `reports/live-status.json` and `SUBMISSION.md`.
 
+## Actual evidence and remaining blocker
+
+**81 controlled tests pass**, including real PostgreSQL tests. The main v1 development attempt produced 103 accepted claims, joint F1 **0.405010**, and 29 answer errors. Groq's daily token quota then blocked the v2 development attempt and both frozen check attempts; those reports retain quota errors and check quality remains null. There is no measured live v2 improvement.
+
+A separately labeled, zero-request replay of saved baseline outputs through the v2 quote resolver recovered seven answers and produced joint F1 **0.588235**. This is controlled postprocessing evidence, **not a live v2 run**. See [analysis](ANALYSIS.md), [submission status](SUBMISSION.md), [live-attempt manifest](reports/live-status.json), and [actual tests](reports/tests.txt). More provider quota is needed to finish the required live-quality experiment.
+
 ## Install
 
 Requires Python 3.11+ and PostgreSQL. Verified locally on Python 3.14.6, PostgreSQL 18.4 and the exact dependency versions in `requirements.lock`.
@@ -51,21 +57,22 @@ Actual captured results are in `reports/tests.txt`. Tests use a fake model provi
    python -m kasparro run --version v1 --split development
    ```
 
-2. Inspect that report's `missed_gold_ids`, `unmatched_prediction_ids`, `matched_wrong_label_ids`, `matches`, predictions and answer errors. Record a concrete diagnosis in `ANALYSIS.md`. The included v2 prompt is **provisional**, motivated by the concrete risk of assigning a whole sentence a label from only one clause. Retain or revise that one change based on the actual baseline; do not claim it was diagnosed from a run already performed. Preserve v1.
+2. Inspect that report's `missed_gold_ids`, `unmatched_prediction_ids`, `matched_wrong_label_ids`, `matches`, predictions and answer errors. Record a concrete diagnosis in `ANALYSIS.md`. The implemented v2 change was selected after the saved baseline: Python resolves an exact quote directly when it occurs once, avoiding incorrect model occurrence counters. Repeated quotes still require the explicit index. The two prompts are identical, isolating this one postprocessing behavior. Preserve v1 and the prior evidence.
 
 3. Run v2 on the same 40 inputs and compare the two reports:
 
    ```sh
    python -m kasparro run --version v2 --split development
-   python -m scripts.compare_runs reports/V1_RUN_ID/report.json reports/V2_RUN_ID/report.json > reports/comparison.json
+   python -m scripts.compare_runs reports/e137a189-2643-4ee3-90ac-3b11bc8ed417/report.json reports/938be519-95bb-4d37-ab02-b229c428d432/report.json > reports/comparison.json
    ```
 
    Record gains, regressions or no gain in `ANALYSIS.md`. Changing model/settings/data/evaluator makes the comparison invalid. Prompt hashes identify the exact version used.
 
-4. Freeze both versions before either final-check run:
+4. For a new experiment, freeze both versions before either final-check run. This repository already includes its freeze; reuse it for unchanged reruns after quota is available:
 
    ```sh
-   python -m scripts.freeze
+   # Run only when establishing a new freeze; the saved freeze already exists.
+   # python -m scripts.freeze
    python -m kasparro run --version v1 --split check
    python -m kasparro run --version v2 --split check
    ```
@@ -94,11 +101,20 @@ Ensure the shell environment uses your intended credentials; uvicorn's env-file 
 
 - `kasparro/data.py`: proper UTF-8 CSV parsing with `newline=''`; immutable source wording, typed booleans/numbers, brand-scoped facts.
 - `kasparro/agent.py`: OpenAI-compatible function-calling loop (Groq or OpenAI), read-only allowlisted tool, strict argument validation, bounded calls, sanitized answer-level errors. Multiple brands may be requested in one turn. Final output requires a primary-brand lookup; citations must come from retrieved brands.
-- `kasparro/models.py`: strict schemas; Python resolves exact quote occurrences; checks Unicode spans, quote equality, IDs, order, overlaps, labels and fact IDs. Repeated quotes use an explicit model-selected occurrence. Reasons have a conservative two-sentence punctuation check.
+- `kasparro/models.py`: strict schemas; Python resolves exact quote occurrences (v2 directly resolves unique quotes); checks Unicode spans, quote equality, IDs, order, overlaps, labels and fact IDs. Repeated quotes use an explicit model-selected occurrence. Reasons have a conservative two-sentence punctuation check.
 - `kasparro/evaluation.py`: no fuzzy or LLM matching. G is all scheduled gold claims, P is all accepted predictions, M is exact matches, C is exact matches with correct labels. Extraction F1 is `2M/(P+G)`; main score joint F1 is `2C/(P+G)`. Errors contribute zero P while retaining their gold in G. Missing/duplicate answer outcomes are rejected.
 - `kasparro/runner.py`, `store.py`, `schema.sql`: atomic local evidence files and per-answer database transactions; parameterized SQL, foreign keys, unique answer/span constraints, JSONB metadata and optional development matches.
-- `prompts/v1.txt`, `prompts/v2.txt`: preserved baseline and provisional single-behavior candidate.
+- `prompts/v1.txt`, `prompts/v2.txt`: identical preserved prompts; v2's sole change is the unique-quote resolver in Python.
 
 Development labels are opened only by the evaluator, after raw predictions are saved. Agent inputs contain the four required fields; tools expose catalogue rows only. Dataset and prompt SHA-256 hashes, versions, settings, timestamps and available Git revision are recorded. Original supplied CSVs and assessment document remain in place.
 
 The adapters follow [Groq OpenAI compatibility](https://console.groq.com/docs/openai), [Groq local tool calling](https://console.groq.com/docs/tool-use/local-tool-calling), and [OpenAI function calling](https://developers.openai.com/api/docs/guides/function-calling).
+
+## Reproduce the additional controlled replay
+
+```sh
+python -m scripts.diagnose_outputs reports/e137a189-2643-4ee3-90ac-3b11bc8ed417/report.json
+python -m scripts.replay_outputs reports/e137a189-2643-4ee3-90ac-3b11bc8ed417/report.json
+```
+
+Replay uses recorded v1 messages and zero provider calls. It preserves provider errors and rejects changed Unicode wording. It never replaces a live-run report. On a rerun, use newly returned run IDs in comparison commands; keep the saved historical attempts.
