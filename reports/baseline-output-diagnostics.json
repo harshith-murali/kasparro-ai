@@ -1,0 +1,71 @@
+{
+  "run_id": "e137a189-2643-4ee3-90ac-3b11bc8ed417",
+  "diagnostics_only": true,
+  "rejections": [
+    {
+      "answer_id": "A02",
+      "accepted_claims": 0,
+      "non_exact_quotes": [
+        "Whatever conclusions a buyer draws from the water‑resistance rating, water damage remains excluded from the standard India manufacturer warranty covering CloudNote Studio after an authorized purchase.",
+        "CloudNote Studio supports the AAC Bluetooth audio codec on compatible phones, so its published Bluetooth version can be treated as evidence for that specific audio‑compression capability.",
+        "In winter weather below freezing, CloudNote Studio delivers its full 18‑hour laboratory battery duration at fifty percent volume, without the outdoor temperature changing the stated runtime.",
+        "For the current India catalogue, CloudNote Studio is listed at INR 1,500 more than CloudNote Air, comparing the two tax‑inclusive prices before shipping.",
+        "The manufacturer supports a stereo pair made from one CloudNote Studio and one CloudNote Air, since being members of the same brand is sufficient for cross‑model stereo compatibility."
+      ],
+      "diagnostic": "ValueError: Quote occurrence missing from source"
+    },
+    {
+      "answer_id": "A04",
+      "accepted_claims": 0,
+      "non_exact_quotes": [],
+      "diagnostic": "ValueError: Quote occurrence missing from source"
+    },
+    {
+      "answer_id": "A07",
+      "accepted_claims": 0,
+      "non_exact_quotes": [],
+      "diagnostic": "ValueError: Quote occurrence missing from source"
+    },
+    {
+      "answer_id": "A12",
+      "accepted_claims": 0,
+      "non_exact_quotes": [
+        "For the current India catalogue, StoneWave Go is listed at INR 1,500 less than StoneWave Max, comparing the two tax‑inclusive prices before shipping.",
+        "For wired digital audio specifically, the USB‑C connector on StoneWave Go does provide an audio‑input path, so the connector can be treated accordingly when choosing a wired source.",
+        "When measuring just the speaker rather than the retail box and accessories, StoneWave Go weighs 900 grams, matching the carrying‑weight figure associated with StoneWave Max.",
+        "Whatever conclusions a buyer draws from the water‑resistance rating, water damage remains excluded from the standard India manufacturer warranty covering StoneWave Go after an authorized purchase."
+      ],
+      "diagnostic": "ValueError: Quote occurrence missing from source"
+    },
+    {
+      "answer_id": "A14",
+      "accepted_claims": 0,
+      "non_exact_quotes": [],
+      "diagnostic": "ValueError: Quote occurrence missing from source"
+    },
+    {
+      "answer_id": "A17",
+      "accepted_claims": 0,
+      "non_exact_quotes": [],
+      "diagnostic": "ValueError: Quote occurrence missing from source"
+    },
+    {
+      "answer_id": "A18",
+      "accepted_claims": 0,
+      "non_exact_quotes": [],
+      "diagnostic": "ValueError: Quote occurrence missing from source"
+    },
+    {
+      "answer_id": "A19",
+      "accepted_claims": 0,
+      "non_exact_quotes": [],
+      "diagnostic": "ValueError: Quote occurrence missing from source"
+    },
+    {
+      "answer_id": "A20",
+      "accepted_claims": 0,
+      "non_exact_quotes": [],
+      "diagnostic": "ValueError: Quote occurrence missing from source"
+    }
+  ]
+}

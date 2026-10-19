@@ -78,7 +78,7 @@ def validate_prediction(answer, prediction, fact_ids):
     return output.model_dump()
 
 
-def locate_quotes(answer, draft, fact_ids):
+def locate_quotes(answer, draft, fact_ids, *, resolve_unique=False):
     draft = DraftOutput.model_validate(draft)
     claims = []
     for claim in draft.claims:
@@ -86,9 +86,13 @@ def locate_quotes(answer, draft, fact_ids):
         while (at := answer.ai_answer.find(claim.quote, at)) >= 0:
             starts.append(at)
             at += 1
-        if claim.occurrence >= len(starts):
-            raise ValueError("Quote occurrence missing from source")
-        start = starts[claim.occurrence]
+        if resolve_unique and len(starts) == 1:
+            # v2: an exact quote occurring once has an unambiguous source location.
+            start = starts[0]
+        else:
+            if claim.occurrence >= len(starts):
+                raise ValueError("Quote occurrence missing from source")
+            start = starts[claim.occurrence]
         end = start + len(claim.quote)
         claims.append({**claim.model_dump(exclude={"occurrence"}), "claim_id": f"{answer.answer_id}:{start}:{end}",
                        "start_char": start, "end_char": end})

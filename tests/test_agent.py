@@ -130,3 +130,33 @@ def test_daily_quota_stops_repeat_requests(monkeypatch):
         with pytest.raises(AgentError) as exc:provider.complete([],[])
         assert exc.value.kind=='quota_exhausted'
     assert len(calls)==1
+
+
+@pytest.mark.parametrize('version,valid',[('v1',False),('v2',True)])
+def test_unique_quote_wrong_occurrence_preserves_v1(answer,catalogue,version,valid):
+    provider=FakeProvider([tool(),response(claims=[draft(occurrence=7)])])
+    result=Agent(provider,catalogue).outcome(answer,version)
+    assert (result['status']=='success')==valid
+    if valid:
+        assert result['claims'][0]['start_char']==0
+        assert result['claims'][0]['quote']==draft()['quote']
+    else:assert result['claims']==[]
+
+
+@pytest.mark.parametrize('case',['repeated_out_of_range','changed_unicode','duplicate_claim'])
+def test_v2_does_not_guess_or_relax_validation(answer,catalogue,case):
+    claims=[draft(occurrence=7)]
+    if case=='repeated_out_of_range':answer['ai_answer']+=' '+draft()['quote']
+    if case=='changed_unicode':
+        answer['ai_answer']='ClearTrail Mini is water-resistant.'
+        claims=[draft('ClearTrail Mini is water‑resistant.')]
+    if case=='duplicate_claim':claims=[draft(occurrence=7),draft(occurrence=8)]
+    result=Agent(FakeProvider([tool(),response(claims=claims)]),catalogue).outcome(answer,'v2')
+    assert result['status']=='error' and result['claims']==[]
+
+
+def test_v2_repeated_quote_uses_explicit_occurrence(answer,catalogue):
+    answer['ai_answer']+=' '+draft()['quote']
+    result=Agent(FakeProvider([tool(),response(claims=[draft(occurrence=1)])]),catalogue).outcome(answer,'v2')
+    assert result['status']=='success'
+    assert result['claims'][0]['start_char']==answer['ai_answer'].rindex(draft()['quote'])

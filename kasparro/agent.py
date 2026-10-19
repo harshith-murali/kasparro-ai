@@ -188,7 +188,7 @@ class Agent:
                 if answer.brand_id not in looked_up:
                     raise AgentError("missing_tool", "Model did not request primary brand facts")
                 allowed_ids = {r["fact_id"] for b in looked_up for r in self.catalogue.by_brand[b]}
-                return locate_quotes(answer, json.loads(reply["content"]), allowed_ids)
+                return locate_quotes(answer, json.loads(reply["content"]), allowed_ids, resolve_unique=version == "v2")
             raise AgentError("turn_limit", "Model turn limit exhausted")
         except AgentError:
             raise
