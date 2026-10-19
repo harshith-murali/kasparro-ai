@@ -70,7 +70,7 @@ Actual captured results are in `reports/tests.txt`. Tests use a fake model provi
    python -m kasparro run --version v2 --split check
    ```
 
-   Groq requests are paced using remaining-token headers and a conservative estimate of the next request, with no automatic retries. Provider errors remain answer errors. Request pacing may add time outside the 60-second provider-request timeout. Groq rejects JSON mode combined with tools, so its responses are prompted as JSON and validated locally. The OpenAI adapter uses JSON mode.
+   Groq requests are paced using remaining-token headers and a conservative estimate of the next request, with no automatic retries. Provider errors remain answer errors. Request pacing may add time outside the 60-second provider-request timeout. Groq rejects JSON mode combined with tools. Its first phase permits batched fact lookups for all needed brands; after tool results, the adapter omits tools and requests the final JSON object. Final claims are validated locally. A Groq answer therefore uses at most two model turns, within the three-turn limit. The OpenAI adapter retains its three-turn tool loop with JSON mode. If Groq reports an exhausted daily token quota, subsequent scheduled answers preserve a `quota_exhausted` error without repeatedly contacting that exhausted quota.
 
 Freezing requires completed live development reports for both current prompts. Live check runs reject a missing or changed freeze fingerprint. Do not edit agent code, prompts, dependencies or settings after freezing. Check reports contain predictions, errors, timings and counts; all gold-dependent fields stay null. No final-check quality score is computed.
 

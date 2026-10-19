@@ -1,33 +1,26 @@
 {
-  "status": "blocked_credentials",
-  "live_requests_made": 0,
-  "reason": "User has no credentials for the assessment allowed providers. Inherited environment key was not used.",
-  "intended_runs": [
+  "status": "in_progress",
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "provider_deviation": "Groq used because the user had no credits for OpenAI, Anthropic or Gemini.",
+  "runs": [
     {
-      "agent_version": "v1",
+      "run_id": "9733ded9-c4a7-41bb-9954-1320273704eb",
+      "version": "v1",
       "split": "development",
-      "status": "not_started",
-      "report": null
+      "status": "processing",
+      "answers": 1,
+      "errors": 1
     },
     {
-      "agent_version": "v2",
+      "run_id": "547a2293-5a2f-4f96-bff1-0178f25766d8",
+      "version": "v1",
       "split": "development",
-      "status": "not_started",
-      "report": null
-    },
-    {
-      "agent_version": "v1",
-      "split": "check",
-      "status": "not_started",
-      "report": null
-    },
-    {
-      "agent_version": "v2",
-      "split": "check",
-      "status": "not_started",
-      "report": null
+      "status": "failed",
+      "answers": 14,
+      "errors": 12
     }
   ],
-  "quality_metrics": null,
-  "live_tool_exchange": null
+  "live_tool_exchange": "reports/provider-checks/A01-probe.json",
+  "comparison": null
 }

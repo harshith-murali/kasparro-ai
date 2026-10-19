@@ -49,10 +49,14 @@ class OpenAIProvider:
     def complete(self, messages, tools):
         try:
             options = {"response_format": {"type": "json_object"}} if self.provider_name == "openai" else {"reasoning_effort": "low"}
-            response = self.request(
-                model=self.settings.model, messages=messages, tools=tools,
-                temperature=self.settings.temperature, max_tokens=self.settings.max_tokens,
-                **options)
+            payload = dict(model=self.settings.model, messages=messages,
+                           temperature=self.settings.temperature, max_tokens=self.settings.max_tokens, **options)
+            if self.provider_name == "groq" and any(m["role"] == "tool" for m in messages):
+                # Groq cannot combine JSON mode with tools; finish after batched lookups.
+                payload["response_format"] = {"type": "json_object"}
+            else:
+                payload["tools"] = tools
+            response = self.request(**payload)
             if response.choices[0].finish_reason not in ("stop", "tool_calls"):
                 raise AgentError("invalid_output", "Incomplete model response")
             raw = response.choices[0].message.model_dump(exclude_none=True)
@@ -97,7 +101,7 @@ class GroqProvider(OpenAIProvider):
         wait = max(0.0, self.settings.request_interval_seconds - (now-self.last_request_at))
         if self.rate_remaining is not None:
             available = min(self.rate_limit, self.rate_remaining + (now-self.rate_updated_at)*self.rate_limit/60)
-            source_chars = len(json.dumps(kwargs["messages"])) + len(json.dumps(kwargs["tools"]))
+            source_chars = len(json.dumps(kwargs["messages"])) + len(json.dumps(kwargs.get("tools", [])))
             # Conservative estimate; token counts and response headers are saved as telemetry.
             expected_output = self.settings.max_tokens
             required = min(self.rate_limit, source_chars/3 + expected_output)

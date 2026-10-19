@@ -99,6 +99,9 @@ def test_groq_compatible_request(monkeypatch):
     assert recorded['request']['reasoning_effort']=='low'
     assert result=={'role':'assistant','content':'{}'}
     assert provider.last_telemetry['rate_limits']['x-ratelimit-limit-tokens']=='8000'
+    provider.complete([{'role':'tool','content':'{}','tool_call_id':'call1'}],[])
+    assert 'tools' not in recorded['request']
+    assert recorded['request']['response_format']=={'type':'json_object'}
 
 
 def test_groq_settings(monkeypatch):

@@ -1,0 +1,106 @@
+{
+  "run_id": "9733ded9-c4a7-41bb-9954-1320273704eb",
+  "status": "failed",
+  "metadata": {
+    "agent_version": "v1",
+    "prompt_version": "v1",
+    "prompt_sha256": "2ddcd6ea9ab85adfd27bb1712639e60f634f3da9dc61405c5d7fb542beff7cbb",
+    "dataset_version": "long-brand-answers-50-v4",
+    "fact_version": "speaker-catalogue-v4",
+    "evaluator_version": "sentence-spans-and-labels-v4",
+    "split": "development",
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "settings": {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "timeout_seconds": 60.0,
+      "temperature": 0.0,
+      "max_tokens": 6000,
+      "max_turns": 3,
+      "request_interval_seconds": 0.0
+    },
+    "timestamp": "2026-10-19T08:18:36.207111+00:00",
+    "source_revision": {
+      "commit": "d4e74eb58b96d14337ed30f5de7d7db687e6a164",
+      "dirty": false
+    },
+    "file_hashes": {
+      "answers.csv": "fa28e813ea54b4e5ea985585f22f084d826241e1182accbc27ace17066125724",
+      "brand_facts.csv": "2190d40fad2dd167ef2437956c43d595aaf2554ea673a4789b9343cb7e2936f2",
+      "development_gold.csv": "afe84cc78f304afb6a4aaa505dd7504af80fcbf8bc507806aa5ff0aab6bf4850"
+    },
+    "scheduled_answers": [
+      "A01",
+      "A02",
+      "A03",
+      "A04",
+      "A05",
+      "A06",
+      "A07",
+      "A08",
+      "A09",
+      "A10",
+      "A11",
+      "A12",
+      "A13",
+      "A14",
+      "A15",
+      "A16",
+      "A17",
+      "A18",
+      "A19",
+      "A20",
+      "A21",
+      "A22",
+      "A23",
+      "A24",
+      "A25",
+      "A26",
+      "A27",
+      "A28",
+      "A29",
+      "A30",
+      "A31",
+      "A32",
+      "A33",
+      "A34",
+      "A35",
+      "A36",
+      "A37",
+      "A38",
+      "A39",
+      "A40"
+    ]
+  },
+  "answers": [
+    {
+      "answer_id": "A01",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "provider_error",
+        "message": "Provider request failed"
+      },
+      "latency_seconds": 20.568205000003218,
+      "trace_reference": "reports/9733ded9-c4a7-41bb-9954-1320273704eb/A01.trace.json"
+    },
+    {
+      "answer_id": "A02",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "rate_limit",
+        "message": "Provider rate limit exceeded"
+      },
+      "latency_seconds": 47.26165829200181,
+      "trace_reference": "reports/9733ded9-c4a7-41bb-9954-1320273704eb/A02.trace.json"
+    }
+  ],
+  "scores": null,
+  "error": {
+    "type": "infrastructure_error",
+    "message": "Run interrupted or infrastructure failed"
+  },
+  "finished_at": "2026-10-19T08:20:18.910385+00:00"
+}

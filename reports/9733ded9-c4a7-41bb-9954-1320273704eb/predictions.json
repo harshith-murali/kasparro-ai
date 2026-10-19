@@ -1,0 +1,24 @@
+[
+  {
+    "answer_id": "A01",
+    "status": "error",
+    "claims": [],
+    "error": {
+      "type": "provider_error",
+      "message": "Provider request failed"
+    },
+    "latency_seconds": 20.568205000003218,
+    "trace_reference": "reports/9733ded9-c4a7-41bb-9954-1320273704eb/A01.trace.json"
+  },
+  {
+    "answer_id": "A02",
+    "status": "error",
+    "claims": [],
+    "error": {
+      "type": "rate_limit",
+      "message": "Provider rate limit exceeded"
+    },
+    "latency_seconds": 47.26165829200181,
+    "trace_reference": "reports/9733ded9-c4a7-41bb-9954-1320273704eb/A02.trace.json"
+  }
+]
