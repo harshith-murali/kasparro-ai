@@ -1,0 +1,422 @@
+{
+  "run_id": "547a2293-5a2f-4f96-bff1-0178f25766d8",
+  "status": "failed",
+  "metadata": {
+    "agent_version": "v1",
+    "prompt_version": "v1",
+    "prompt_sha256": "2ddcd6ea9ab85adfd27bb1712639e60f634f3da9dc61405c5d7fb542beff7cbb",
+    "dataset_version": "long-brand-answers-50-v4",
+    "fact_version": "speaker-catalogue-v4",
+    "evaluator_version": "sentence-spans-and-labels-v4",
+    "split": "development",
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "settings": {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "timeout_seconds": 60.0,
+      "temperature": 0.0,
+      "max_tokens": 6000,
+      "max_turns": 3,
+      "request_interval_seconds": 0.0
+    },
+    "timestamp": "2026-10-19T08:14:58.517382+00:00",
+    "source_revision": {
+      "commit": "ed841cb89160c919a124a2290f5b3cea4e10df93",
+      "dirty": false
+    },
+    "file_hashes": {
+      "answers.csv": "fa28e813ea54b4e5ea985585f22f084d826241e1182accbc27ace17066125724",
+      "brand_facts.csv": "2190d40fad2dd167ef2437956c43d595aaf2554ea673a4789b9343cb7e2936f2",
+      "development_gold.csv": "afe84cc78f304afb6a4aaa505dd7504af80fcbf8bc507806aa5ff0aab6bf4850"
+    },
+    "scheduled_answers": [
+      "A01",
+      "A02",
+      "A03",
+      "A04",
+      "A05",
+      "A06",
+      "A07",
+      "A08",
+      "A09",
+      "A10",
+      "A11",
+      "A12",
+      "A13",
+      "A14",
+      "A15",
+      "A16",
+      "A17",
+      "A18",
+      "A19",
+      "A20",
+      "A21",
+      "A22",
+      "A23",
+      "A24",
+      "A25",
+      "A26",
+      "A27",
+      "A28",
+      "A29",
+      "A30",
+      "A31",
+      "A32",
+      "A33",
+      "A34",
+      "A35",
+      "A36",
+      "A37",
+      "A38",
+      "A39",
+      "A40"
+    ]
+  },
+  "answers": [
+    {
+      "answer_id": "A01",
+      "status": "success",
+      "claims": [
+        {
+          "claim_id": "A01:306:460",
+          "start_char": 306,
+          "end_char": 460,
+          "quote": "For the current India catalogue, ClearTrail Mini is listed at INR 1,200 less than ClearTrail Plus, comparing the two tax-inclusive prices before shipping.",
+          "label": "supported",
+          "fact_ids": [
+            "cleartrail.mini.price_2026",
+            "cleartrail.plus.price_2026"
+          ],
+          "reason": "Prices match catalogue facts; difference is 1200 INR."
+        },
+        {
+          "claim_id": "A01:461:647",
+          "start_char": 461,
+          "end_char": 647,
+          "quote": "For an authorized India purchase with the original invoice and a manufacturing defect, ClearTrail Mini receives a standard manufacturer warranty lasting 18 months from the purchase date.",
+          "label": "contradicted",
+          "fact_ids": [
+            "cleartrail.mini.warranty_india"
+          ],
+          "reason": "Warranty is 12 months per fact, not 18 months."
+        },
+        {
+          "claim_id": "A01:649:832",
+          "start_char": 649,
+          "end_char": 832,
+          "quote": "An opened ClearTrail Mini can be returned to any authorized India seller within thirty days for a full refund, even when the speaker has no manufacturing defect or functional problem.",
+          "label": "unknown",
+          "fact_ids": [],
+          "reason": "No return policy fact is provided."
+        },
+        {
+          "claim_id": "A01:833:1040",
+          "start_char": 833,
+          "end_char": 1040,
+          "quote": "The sustained amplifier output of ClearTrail Mini is forty watts per channel during ordinary playback, which allows a direct loudness comparison with other speakers advertised using electrical power figures.",
+          "label": "unknown",
+          "fact_ids": [],
+          "reason": "Amplifier output not covered by facts."
+        },
+        {
+          "claim_id": "A01:1237:1439",
+          "start_char": 1237,
+          "end_char": 1439,
+          "quote": "An authorized India service centre guarantees repair of ClearTrail Mini within two working days after receiving the unit and the required purchase paperwork, regardless of replacement-part availability.",
+          "label": "unknown",
+          "fact_ids": [],
+          "reason": "Repair time guarantee not in facts."
+        },
+        {
+          "claim_id": "A01:1440:1619",
+          "start_char": 1440,
+          "end_char": 1619,
+          "quote": "The stated laboratory playback time for ClearTrail Mini, using a new battery with EQ off at one hundred percent volume, remains 12 hours without any reduction for louder playback.",
+          "label": "contradicted",
+          "fact_ids": [
+            "cleartrail.mini.battery_100_percent"
+          ],
+          "reason": "Fact lists 6 hours at 100% volume, not 12 hours."
+        },
+        {
+          "claim_id": "A01:1620:1767",
+          "start_char": 1620,
+          "end_char": 1767,
+          "quote": "For an India purchase at the official catalogue list price on 1 October 2026, ClearTrail Mini costs INR 1,299 including tax but excluding shipping.",
+          "label": "supported",
+          "fact_ids": [
+            "cleartrail.mini.price_2026"
+          ],
+          "reason": "Price matches the catalogue fact."
+        },
+        {
+          "claim_id": "A01:1769:1942",
+          "start_char": 1769,
+          "end_char": 1942,
+          "quote": "The official India retail box for ClearTrail Mini includes a wall charging adapter, even though separate accessory lists may make the charging arrangement look less obvious.",
+          "label": "contradicted",
+          "fact_ids": [
+            "cleartrail.mini.adapter_included"
+          ],
+          "reason": "Fact states adapter is not included."
+        },
+        {
+          "claim_id": "A01:1943:2104",
+          "start_char": 1943,
+          "end_char": 2104,
+          "quote": "The built-in Wi-Fi capability of ClearTrail Mini is absent, which should be treated as a separate specification from its ability to receive audio over Bluetooth.",
+          "label": "supported",
+          "fact_ids": [
+            "cleartrail.mini.wifi"
+          ],
+          "reason": "Wi‑Fi field is false, confirming absence."
+        }
+      ],
+      "error": null,
+      "latency_seconds": 15.359884874997078,
+      "trace_reference": "reports/547a2293-5a2f-4f96-bff1-0178f25766d8/A01.trace.json"
+    },
+    {
+      "answer_id": "A02",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "rate_limit",
+        "message": "Provider rate limit exceeded"
+      },
+      "latency_seconds": 0.05927254199923482,
+      "trace_reference": "reports/547a2293-5a2f-4f96-bff1-0178f25766d8/A02.trace.json"
+    },
+    {
+      "answer_id": "A03",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "rate_limit",
+        "message": "Provider rate limit exceeded"
+      },
+      "latency_seconds": 0.04790000000502914,
+      "trace_reference": "reports/547a2293-5a2f-4f96-bff1-0178f25766d8/A03.trace.json"
+    },
+    {
+      "answer_id": "A04",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "rate_limit",
+        "message": "Provider rate limit exceeded"
+      },
+      "latency_seconds": 0.041306874991278164,
+      "trace_reference": "reports/547a2293-5a2f-4f96-bff1-0178f25766d8/A04.trace.json"
+    },
+    {
+      "answer_id": "A05",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "rate_limit",
+        "message": "Provider rate limit exceeded"
+      },
+      "latency_seconds": 0.046649459007312544,
+      "trace_reference": "reports/547a2293-5a2f-4f96-bff1-0178f25766d8/A05.trace.json"
+    },
+    {
+      "answer_id": "A06",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "rate_limit",
+        "message": "Provider rate limit exceeded"
+      },
+      "latency_seconds": 0.048685874993680045,
+      "trace_reference": "reports/547a2293-5a2f-4f96-bff1-0178f25766d8/A06.trace.json"
+    },
+    {
+      "answer_id": "A07",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "rate_limit",
+        "message": "Provider rate limit exceeded"
+      },
+      "latency_seconds": 0.13433616700058337,
+      "trace_reference": "reports/547a2293-5a2f-4f96-bff1-0178f25766d8/A07.trace.json"
+    },
+    {
+      "answer_id": "A08",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "rate_limit",
+        "message": "Provider rate limit exceeded"
+      },
+      "latency_seconds": 0.05175654099730309,
+      "trace_reference": "reports/547a2293-5a2f-4f96-bff1-0178f25766d8/A08.trace.json"
+    },
+    {
+      "answer_id": "A09",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "rate_limit",
+        "message": "Provider rate limit exceeded"
+      },
+      "latency_seconds": 0.0469225419947179,
+      "trace_reference": "reports/547a2293-5a2f-4f96-bff1-0178f25766d8/A09.trace.json"
+    },
+    {
+      "answer_id": "A10",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "rate_limit",
+        "message": "Provider rate limit exceeded"
+      },
+      "latency_seconds": 0.04439070899388753,
+      "trace_reference": "reports/547a2293-5a2f-4f96-bff1-0178f25766d8/A10.trace.json"
+    },
+    {
+      "answer_id": "A11",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "rate_limit",
+        "message": "Provider rate limit exceeded"
+      },
+      "latency_seconds": 0.04280095800640993,
+      "trace_reference": "reports/547a2293-5a2f-4f96-bff1-0178f25766d8/A11.trace.json"
+    },
+    {
+      "answer_id": "A12",
+      "status": "success",
+      "claims": [
+        {
+          "claim_id": "A12:335:515",
+          "start_char": 335,
+          "end_char": 515,
+          "quote": "The official India catalogue price of StoneWave Go will drop by INR 300 during January 2027, with that future reduction applying before shipping to purchases from the brand itself.",
+          "label": "unknown",
+          "fact_ids": [],
+          "reason": "No catalogue fact about a future price drop. Cannot verify."
+        },
+        {
+          "claim_id": "A12:516:674",
+          "start_char": 516,
+          "end_char": 674,
+          "quote": "The built-in Wi-Fi capability of StoneWave Go is absent, which should be treated as a separate specification from its ability to receive audio over Bluetooth.",
+          "label": "supported",
+          "fact_ids": [
+            "stonewave.go.wifi"
+          ],
+          "reason": "Fact states Wi‑Fi is false for StoneWave Go."
+        },
+        {
+          "claim_id": "A12:676:871",
+          "start_char": 676,
+          "end_char": 871,
+          "quote": "The plastic used in the enclosure of StoneWave Go contains at least sixty percent post-consumer recycled material by weight, excluding the electronic components and the external retail packaging.",
+          "label": "unknown",
+          "fact_ids": [],
+          "reason": "No fact about recycled material content."
+        },
+        {
+          "claim_id": "A12:872:1032",
+          "start_char": 872,
+          "end_char": 1032,
+          "quote": "At fifty percent volume with EQ off and a new battery in the laboratory, StoneWave Go is rated for 1020 minutes of playback before recharging becomes necessary.",
+          "label": "contradicted",
+          "fact_ids": [
+            "stonewave.go.battery_50_percent"
+          ],
+          "reason": "Fact gives 16 hours (960 minutes) at those conditions, not 1020 minutes."
+        },
+        {
+          "claim_id": "A12:1229:1378",
+          "start_char": 1229,
+          "end_char": 1378,
+          "quote": "For the current India catalogue, StoneWave Go is listed at INR 1,500 less than StoneWave Max, comparing the two tax-inclusive prices before shipping.",
+          "label": "supported",
+          "fact_ids": [
+            "stonewave.go.price_2026",
+            "stonewave.max.price_2026"
+          ],
+          "reason": "1999 INR vs 3499 INR gives a 1500 INR difference."
+        },
+        {
+          "claim_id": "A12:1379:1559",
+          "start_char": 1379,
+          "end_char": 1559,
+          "quote": "An opened StoneWave Go can be returned to any authorized India seller within thirty days for a full refund, even when the speaker has no manufacturing defect or functional problem.",
+          "label": "unknown",
+          "fact_ids": [],
+          "reason": "Return‑policy fact not present in catalogue."
+        },
+        {
+          "claim_id": "A12:1560:1741",
+          "start_char": 1560,
+          "end_char": 1741,
+          "quote": "For wired digital audio specifically, the USB-C connector on StoneWave Go does provide an audio-input path, so the connector can be treated accordingly when choosing a wired source.",
+          "label": "contradicted",
+          "fact_ids": [
+            "stonewave.go.usb_audio"
+          ],
+          "reason": "Fact states USB‑C audio input is false."
+        },
+        {
+          "claim_id": "A12:1743:1916",
+          "start_char": 1743,
+          "end_char": 1916,
+          "quote": "When measuring just the speaker rather than the retail box and accessories, StoneWave Go weighs 900 grams, matching the carrying-weight figure associated with StoneWave Max.",
+          "label": "contradicted",
+          "fact_ids": [
+            "stonewave.go.weight"
+          ],
+          "reason": "Fact gives Go weight as 440 g, not 900 g."
+        },
+        {
+          "claim_id": "A12:1917:2113",
+          "start_char": 1917,
+          "end_char": 2113,
+          "quote": "Whatever conclusions a buyer draws from the water-resistance rating, water damage remains excluded from the standard India manufacturer warranty covering StoneWave Go after an authorized purchase.",
+          "label": "supported",
+          "fact_ids": [
+            "stonewave.go.water_damage_covered"
+          ],
+          "reason": "Fact indicates water damage is not covered by warranty."
+        }
+      ],
+      "error": null,
+      "latency_seconds": 58.33957162499428,
+      "trace_reference": "reports/547a2293-5a2f-4f96-bff1-0178f25766d8/A12.trace.json"
+    },
+    {
+      "answer_id": "A13",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "invalid_output",
+        "message": "Invalid model output or tool arguments"
+      },
+      "latency_seconds": 65.55687041599595,
+      "trace_reference": "reports/547a2293-5a2f-4f96-bff1-0178f25766d8/A13.trace.json"
+    },
+    {
+      "answer_id": "A14",
+      "status": "error",
+      "claims": [],
+      "error": {
+        "type": "rate_limit",
+        "message": "Provider rate limit exceeded"
+      },
+      "latency_seconds": 0.1328834169980837,
+      "trace_reference": "reports/547a2293-5a2f-4f96-bff1-0178f25766d8/A14.trace.json"
+    }
+  ],
+  "scores": null,
+  "error": {
+    "type": "infrastructure_error",
+    "message": "Run interrupted or infrastructure failed"
+  },
+  "finished_at": "2026-10-19T08:17:41.778434+00:00"
+}

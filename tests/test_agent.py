@@ -106,3 +106,24 @@ def test_groq_settings(monkeypatch):
     monkeypatch.setenv('GROQ_MODEL','openai/gpt-oss-120b')
     settings=Settings.from_env()
     assert settings.provider=='groq' and settings.model=='openai/gpt-oss-120b'
+
+
+def test_daily_quota_stops_repeat_requests(monkeypatch):
+    import httpx
+    import kasparro.agent as module
+    from openai import RateLimitError
+    calls=[]
+    class Client:
+        def __init__(self,**kwargs):
+            self.chat=self; self.completions=self; self.with_raw_response=self
+        def create(self,**kwargs):
+            calls.append(kwargs)
+            reply=httpx.Response(429,request=httpx.Request('POST','https://api.groq.com/openai/v1/chat/completions'))
+            raise RateLimitError('tokens per day (TPD) exhausted',response=reply,body={'message':'tokens per day (TPD) exhausted'})
+    monkeypatch.setenv('GROQ_API_KEY','test-only-key')
+    monkeypatch.setattr(module,'OpenAI',Client)
+    provider=module.GroqProvider(Settings(provider='groq'))
+    for _ in range(2):
+        with pytest.raises(AgentError) as exc:provider.complete([],[])
+        assert exc.value.kind=='quota_exhausted'
+    assert len(calls)==1

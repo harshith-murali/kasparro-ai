@@ -87,16 +87,19 @@ class GroqProvider(OpenAIProvider):
         self.rate_limit = 8000.0
         self.rate_updated_at = time.monotonic()
         self.last_telemetry = None
+        self.daily_exhausted = False
 
     def request(self, **kwargs):
         # Pace requests before sending; failed requests are never retried or relabelled.
+        if self.daily_exhausted:
+            raise AgentError("quota_exhausted", "Provider daily token quota exhausted")
         now = time.monotonic()
         wait = max(0.0, self.settings.request_interval_seconds - (now-self.last_request_at))
         if self.rate_remaining is not None:
             available = min(self.rate_limit, self.rate_remaining + (now-self.rate_updated_at)*self.rate_limit/60)
             source_chars = len(json.dumps(kwargs["messages"])) + len(json.dumps(kwargs["tools"]))
             # Conservative estimate; token counts and response headers are saved as telemetry.
-            expected_output = 2200 if any(m["role"] == "tool" for m in kwargs["messages"]) else 300
+            expected_output = self.settings.max_tokens
             required = min(self.rate_limit, source_chars/3 + expected_output)
             wait = max(wait, (required-available)*60/self.rate_limit)
         while wait > 0:
@@ -104,7 +107,16 @@ class GroqProvider(OpenAIProvider):
             time.sleep(pause)
             wait -= pause
         self.last_request_at = time.monotonic()
-        raw = self.client.chat.completions.with_raw_response.create(**kwargs)
+        try:
+            raw = self.client.chat.completions.with_raw_response.create(**kwargs)
+        except APIStatusError as exc:
+            body = str(exc.body).lower()
+            if exc.status_code == 429 and ("tokens per day" in body or "(tpd)" in body):
+                self.daily_exhausted = True
+                raise AgentError("quota_exhausted", "Provider daily token quota exhausted") from None
+            self.rate_remaining = float(exc.response.headers.get("x-ratelimit-remaining-tokens", "0"))
+            self.rate_updated_at = time.monotonic()
+            raise
         response = raw.parse()
         self.rate_limit = float(raw.headers.get("x-ratelimit-limit-tokens", self.rate_limit))
         self.rate_remaining = float(raw.headers.get("x-ratelimit-remaining-tokens", self.rate_limit))
